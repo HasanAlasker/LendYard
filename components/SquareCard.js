@@ -63,7 +63,7 @@ const getStyles = (theme) =>
       elevation: 7,
     },
     text: {
-      fontSize: 22,
+      fontSize: 20,
       fontWeight: "bold",
       textAlign: "center",
       color: theme.always_white,

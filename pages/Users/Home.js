@@ -7,6 +7,8 @@ import SearchBar from '../../components/SearchBar';
 import useThemedStyles from "../../hooks/useThemedStyles";
 import WelcomeCard from '../../components/WelcomeCard';
 import SquareCard from '../../components/SquareCard';
+import Navbar from '../../components/Navbar';
+
 
 function Home(props) {
   const styles = useThemedStyles(getStyles);
@@ -29,9 +31,8 @@ function Home(props) {
           <SquareCard icon={'calendar'} name={'Events'} cardnum={7}></SquareCard>
           <SquareCard icon={'book'} name={'Books'} cardnum={8}></SquareCard>
         </View>
-        
       </ScrollView>
-      
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

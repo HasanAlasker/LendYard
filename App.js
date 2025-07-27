@@ -7,6 +7,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { ThemeProvider } from "./config/ThemeContext";
 import Home from "./pages/Users/Home";
+import Have from "./pages/Users/Have";
+import Post from "./pages/Users/Post";
+import Book from "./pages/Users/Book";
+import Profile from "./pages/Users/Profile";
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => (
@@ -15,6 +19,10 @@ const StackNavigator = () => (
     screenOptions={{ headerShown: false, animation: "none" }}
   >
     <Stack.Screen name="Home" component={Home}></Stack.Screen>
+    <Stack.Screen name="Have" component={Have}></Stack.Screen>
+    <Stack.Screen name="Post" component={Post}></Stack.Screen>
+    <Stack.Screen name="Book" component={Book}></Stack.Screen>
+    <Stack.Screen name="Profile" component={Profile}></Stack.Screen>
   </Stack.Navigator>
 );
 

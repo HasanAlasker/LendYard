@@ -1,6 +1,7 @@
 export const lightTheme = {
     'purple':'#AC2FFF',
     'background': '#ECECEC',
+    'transp':'#ecececb6',
     'post': '#ffffff',
     'main_text': '#000000',
     'sec_text': '#989898',

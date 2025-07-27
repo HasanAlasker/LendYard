@@ -1,0 +1,22 @@
+import useThemedStyles from '../hooks/useThemedStyles';
+
+
+const styles = useThemedStyles(getStyles);
+
+
+const getStyles = (theme) =>
+
+
+
+
+
+
+import { useTheme } from "../config/ThemeContext";   // 👈 Needed for dynamic colors when color is put in the inline of the component or is set by passing it to the parent
+
+const { theme } = useTheme();
+
+
+
+
+
+https://www.termsfeed.com/live/abb3cb95-c240-4161-8607-678bdd6800b3   // privacy policy link

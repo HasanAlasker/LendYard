@@ -1,0 +1,43 @@
+export const lightTheme = {
+    'purple':'#AC2FFF',
+    'background': '#ECECEC',
+    'post': '#ffffff',
+    'main_text': '#000000',
+    'sec_text': '#989898',
+    'darker_gray': '#575757',
+    'red': '#FF5959',
+    'alway_white':'white',
+    'gold':'#FFBF00',
+    'green':'#09B700',
+
+    'card1':'#FFE188',
+    'card2':'#FF8888',
+    'card3':'#FFA888',
+    'card4':'#EF88FF',
+    'card5':'#A688FF',
+    'card6':'#88C8FF',
+    'card7':'#96FF88',
+    'card8':'#88FFCB',
+};
+
+export const darkTheme = {
+    'purple':'#AC2FFF',
+    'background': '#262626',
+    'post': '#3C3C3C',
+    'main_text': '#FFFFFF',
+    'sec_text': '#989898',
+    'darker_gray': '#D3D3D3',
+    'red': '#FF5959',
+    'alway_white':'white',
+    'gold':'#FFBF00',
+    'green':'#09B700',
+    
+    'card1':'#FFE188',
+    'card2':'#FF8888',
+    'card3':'#FFA888',
+    'card4':'#EF88FF',
+    'card5':'#A688FF',
+    'card6':'#88C8FF',
+    'card7':'#96FF88',
+    'card8':'#88FFCB',
+}

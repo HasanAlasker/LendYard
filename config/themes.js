@@ -1,13 +1,12 @@
 export const lightTheme = {
     'purple':'#AC2FFF',
     'background': '#ECECEC',
-    'transp':'#ecececb6',
     'post': '#ffffff',
     'main_text': '#000000',
     'sec_text': '#989898',
     'darker_gray': '#575757',
     'red': '#FF5959',
-    'alway_white':'white',
+    'always_white':'white',
     'gold':'#FFBF00',
     'green':'#09B700',
 
@@ -29,7 +28,7 @@ export const darkTheme = {
     'sec_text': '#989898',
     'darker_gray': '#D3D3D3',
     'red': '#FF5959',
-    'alway_white':'white',
+    'always_white':'white',
     'gold':'#FFBF00',
     'green':'#09B700',
     

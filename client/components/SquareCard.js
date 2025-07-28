@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
@@ -32,14 +32,14 @@ function SquareCard({ icon, name, cardnum }) {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
+    <TouchableOpacity style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       <MaterialCommunityIcons
         name={icon}
         size={115}
         color={theme.always_white}
       ></MaterialCommunityIcons>
       <AppText style={[styles.text]}>{name}</AppText>
-    </View>
+    </TouchableOpacity>
   );
 }
 

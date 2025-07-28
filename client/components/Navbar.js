@@ -72,15 +72,15 @@ function Navbar(props) {
 
         <TouchableOpacity
           style={styles.navbarBtn}
-          onPress={() => navigation.navigate("MyProfile")}
+          onPress={() => navigation.navigate("Profile")}
         >
           <Feather
             name="user"
             size={30}
-            style={[styles.icon, route.name === "MyProfile" && styles.active]}
+            style={[styles.icon, route.name === "Profile" && styles.active]}
           />
           <Text
-            style={[styles.text, route.name === "MyProfile" && styles.active]}
+            style={[styles.text, route.name === "Profile" && styles.active]}
           >
             Profile
           </Text>

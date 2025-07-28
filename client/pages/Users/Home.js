@@ -8,13 +8,14 @@ import useThemedStyles from "../../hooks/useThemedStyles";
 import WelcomeCard from '../../components/WelcomeCard';
 import SquareCard from '../../components/SquareCard';
 import Navbar from '../../components/Navbar';
+import SafeScreen from '../../components/SafeScreen';
 
 
 function Home(props) {
   const styles = useThemedStyles(getStyles);
 
   return (
-    <SafeAreaView style={styles.background}>
+    <SafeScreen>
       <SearchBar></SearchBar>
       <ScrollView >
         <WelcomeCard name={'Hasan'}></WelcomeCard>
@@ -33,7 +34,7 @@ function Home(props) {
         </View>
       </ScrollView>
       <Navbar></Navbar>
-    </SafeAreaView>
+    </SafeScreen>
   );
 }
 

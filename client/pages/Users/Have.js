@@ -4,15 +4,16 @@ import Navbar from '../../components/Navbar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SearchBar from '../../components/SearchBar';
 import FullScreen from '../../components/FullScreen';
+import SafeScreen from '../../components/SafeScreen';
 
 
 function Have(props) {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeScreen>
         <SearchBar></SearchBar>
         <View style={styles.container}></View>
         <Navbar></Navbar>
-    </SafeAreaView>
+    </SafeScreen>
     
   );
 }

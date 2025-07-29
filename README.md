@@ -75,7 +75,7 @@
 ## 👨‍💻 Author
 
 **Hasan Alasker**  
-Front-End Engineer | UI/UX Designer | Software Developer  
+Front-End Engineer | UI/UX Designer | Mobile Developer  
 🌐 [Portfolio Website](https://hasan-alasker.netlify.app)  
 📧 [hasanalasker.contact@gmail.com](mailto:hasanalasker.contact@gmail.com)
 

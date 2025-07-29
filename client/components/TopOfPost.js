@@ -1,0 +1,61 @@
+import React from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import AppText from "../config/AppText";
+import { Feather } from "@expo/vector-icons";
+import useThemedStyles from "../hooks/useThemedStyles";
+
+function TopOfPost({ name, date, image }) {
+  const styles = useThemedStyles(getStyles);
+  return (
+    <View style={styles.topPart}>
+      <View style={styles.picAndNameAndDate}>
+        <View style={styles.imageHolder}></View>
+        <View style={styles.nameAndDate}>
+          <AppText style={styles.name}>{name}</AppText>
+          <AppText style={styles.date}>{date}</AppText>
+        </View>
+      </View>
+      <TouchableOpacity>
+        <Feather name="more-vertical" size={30} style={styles.more}></Feather>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const getStyles = (theme) =>
+  StyleSheet.create({
+    picAndNameAndDate: {
+      flexDirection: "row",
+      gap: 10,
+      alignItems: "center",
+    },
+    nameAndDate: {
+      gap: 0,
+    },
+    imageHolder: {
+      width: 40,
+      aspectRatio: 1,
+      backgroundColor: theme.sec_text,
+      borderRadius: "50%",
+    },
+    name: {
+      fontSize: 17,
+      fontWeight: "bold",
+      color: theme.main_text,
+    },
+    date: {
+      fontSize: 14,
+      color: theme.sec_text,
+      fontWeight: "bold",
+    },
+    topPart: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    more:{
+        left:10
+    }
+  });
+
+export default TopOfPost;

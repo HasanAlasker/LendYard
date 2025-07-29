@@ -9,6 +9,11 @@ import PostComponent from "../../components/PostComponent";
 import useThemedStyles from "../../hooks/useThemedStyles";
 import AppText from "../../config/AppText";
 import { Feather } from "@expo/vector-icons";
+import TopOfPost from "../../components/TopOfPost";
+import ItmeImage from "../../components/ItmeImage";
+import ItemNameAndCat from "../../components/ItemNameAndCat";
+import Location from "../../components/Location";
+import ItemStatus from "../../components/ItemStatus";
 
 function Have(props) {
   const styles = useThemedStyles(getStyles);
@@ -17,18 +22,11 @@ function Have(props) {
       <SearchBar></SearchBar>
       <View style={styles.container}>
         <PostComponent>
-          <View style={styles.topPart}>
-            <View style={styles.picAndNameAndDate}>
-              <View style={styles.imageHolder}></View>
-              <View style={styles.nameAndDate}>
-                <AppText style={styles.name}>Hasan Alasker</AppText>
-                <AppText style={styles.date}>14/12/2025</AppText>
-              </View>
-            </View>
-            <TouchableOpacity>
-              <Feather name="more-vertical" size={30}></Feather>
-            </TouchableOpacity>
-          </View>
+          <TopOfPost name={"Hasan Alasker"} date={"14 /12 /2025"}></TopOfPost>
+          <ItmeImage></ItmeImage>
+          <ItemNameAndCat itemName={"Outdoor Table"} itemCat={"Events"}></ItemNameAndCat>
+          <Location location={'Al-bayader'}></Location>
+          <ItemStatus status={'available'} time={'2 Days'}></ItemStatus>
         </PostComponent>
       </View>
       <Navbar></Navbar>
@@ -41,32 +39,7 @@ const getStyles = (theme) =>
     container: {
       flex: 1,
     },
-    picAndNameAndDate: {
-      flexDirection: "row",
-      gap: 12,
-      alignItems: "center",
-    },
-    imageHolder: {
-      width: 45,
-      aspectRatio: 1,
-      backgroundColor: theme.sec_text,
-      borderRadius: "50%",
-    },
-    name: {
-      fontSize: 20,
-      fontWeight: "bold",
-      color: theme.main_text,
-    },
-    date: {
-      fontSize: 16,
-      color: theme.sec_text,
-      fontWeight: "bold",
-    },
-    topPart: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
+    
   });
 
 export default Have;

@@ -102,7 +102,7 @@ const getStyles = (theme) =>
       paddingBottom: 13,
       borderTopRightRadius: 22,
       borderTopLeftRadius: 22,
-      
+      height:73,
       width: "100%",
       zIndex: 100,
 

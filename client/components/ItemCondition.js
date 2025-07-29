@@ -5,14 +5,14 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
 
-function Location({ location }) {
+function ItemCondition({condition}) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   return (
     <View style={styles.container}>
-      <Octicons name="location" size={22} color={theme.purple}></Octicons>
-      <AppText style={styles.text}>{location}</AppText>
+      <Octicons name="check-circle" size={20} color={theme.sec_text}></Octicons>
+      <AppText style={styles.text}>{condition}</AppText>
     </View>
   );
 }
@@ -27,8 +27,8 @@ const getStyles = (theme) =>
     text: {
       fontSize: 18,
       fontWeight: "bold",
-      color: theme.purple,
+      color: theme.sec_text,
     },
   });
 
-export default Location;
+export default ItemCondition;

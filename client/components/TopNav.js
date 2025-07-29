@@ -52,6 +52,7 @@ const getStyles = (theme) =>
     text: {
       fontSize: 20,
       color: theme.sec_text,
+      
     },
     line: {
       backgroundColor: theme.sec_text,

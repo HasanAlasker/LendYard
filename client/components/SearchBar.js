@@ -44,7 +44,7 @@ const getStyles = (theme) =>
   StyleSheet.create({
     searchbar: {
       width: "100%",
-      paddingTop:20,
+      paddingTop:5,
       borderBottomRightRadius:30,
       borderBottomLeftRadius:30,
       zIndex:100,

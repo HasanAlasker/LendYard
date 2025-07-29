@@ -1,9 +1,9 @@
 # 🌿 LendYard
 
-[![React Native](https://img.shields.io/badge/Built%20with-React%20Native-61dafb?logo=react&logoColor=white)](https://reactnative.dev/)
-[![Expo](https://img.shields.io/badge/Powered%20by-Expo-000020?logo=expo&logoColor=white)](https://expo.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Open Source](https://img.shields.io/badge/Open--Source-Yes-green)](#)
+<img src="https://img.shields.io/badge/Built%20With-React%20Native-61dafb?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Powered%20By-Expo-000020?style=for-the-badge&logo=expo&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Open--Source-Yes-brightgreen?style=for-the-badge" />
 
 > **Give what you can. Borrow what you need.**  
 > Empowering local communities through smarter sharing.
@@ -73,7 +73,7 @@
 ## 📄 License
 
 This project is licensed under the **MIT License**.  
-See [`LICENSE`](./LICENSE) for more details.
+See [`LICENSE`]([./LICENSE](https://opensource.org/licenses/MIT)) for more details.
 
 ---
 

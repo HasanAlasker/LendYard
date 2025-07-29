@@ -11,7 +11,7 @@ function ItemRating({rating}) {
 
   return (
     <View style={styles.container}>
-      <Octicons name="star-fill" size={22} color={theme.gold}></Octicons>
+      <Octicons name="star-fill" size={20} color={theme.gold}></Octicons>
       <AppText style={styles.text}>{rating}</AppText>
     </View>
   );
@@ -25,7 +25,7 @@ const getStyles = (theme) =>
       gap: 10,
     },
     text: {
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold",
       color: theme.gold,
     },

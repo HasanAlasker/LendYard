@@ -1,21 +1,23 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import AppText from "../config/AppText";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 
-function TopOfPost({ name, date, image }) {
+function TopOfPost({ name, date, image ,onPress}) {
   const styles = useThemedStyles(getStyles);
   return (
     <View style={styles.topPart}>
       <View style={styles.picAndNameAndDate}>
-        <View style={styles.imageHolder}></View>
+        <View style={styles.imageHolder}>
+          <Image source={image} style={styles.pic}></Image>
+        </View>
         <View style={styles.nameAndDate}>
           <AppText style={styles.name}>{name}</AppText>
           <AppText style={styles.date}>{date}</AppText>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <Feather name="more-vertical" size={30} style={styles.more}></Feather>
       </TouchableOpacity>
     </View>
@@ -36,7 +38,8 @@ const getStyles = (theme) =>
       width: 40,
       aspectRatio: 1,
       backgroundColor: theme.sec_text,
-      borderRadius: "50%",
+      borderRadius:20,
+      overflow:"hidden"
     },
     name: {
       fontSize: 17,
@@ -55,6 +58,11 @@ const getStyles = (theme) =>
     },
     more:{
         left:10
+    },
+    pic:{
+      width: '100%',
+      height:40,
+      resizeMode:'cover'
     }
   });
 

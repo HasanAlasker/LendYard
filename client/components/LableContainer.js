@@ -11,7 +11,7 @@ function LableContainer({children}) {
 
 const styles = StyleSheet.create({
   container:{
-    gap:10
+    gap:6
   },
 })
 

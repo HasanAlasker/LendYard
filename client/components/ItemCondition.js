@@ -11,7 +11,7 @@ function ItemCondition({condition}) {
 
   return (
     <View style={styles.container}>
-      <Octicons name="check-circle" size={20} color={theme.sec_text}></Octicons>
+      <Octicons name="check-circle" size={18} color={theme.sec_text}></Octicons>
       <AppText style={styles.text}>{condition}</AppText>
     </View>
   );
@@ -25,7 +25,7 @@ const getStyles = (theme) =>
       gap: 10,
     },
     text: {
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold",
       color: theme.sec_text,
     },

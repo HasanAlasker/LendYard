@@ -16,15 +16,15 @@ function ItemNameAndCat({ itemName, itemCat }) {
 const getStyles = (theme) =>
   StyleSheet.create({
     itemAndCatagory: {
-      gap: 1,
+      gap: 0,
     },
     itemName: {
-      fontSize: 22,
+      fontSize: 20,
       fontWeight: "bold",
       color: theme.main_text,
     },
     itemCat: {
-      fontSize: 17,
+      fontSize: 15,
       color: theme.sec_text,
       fontWeight: "bold",
     },

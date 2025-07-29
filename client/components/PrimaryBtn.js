@@ -26,7 +26,7 @@ const getStyles =(theme) => StyleSheet.create({
   },
   text:{
     color:theme.always_white,
-    fontSize:20,
+    fontSize:18,
     textAlign:'center',
     fontWeight:'bold',
     alignSelf:'center'

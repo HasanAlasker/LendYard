@@ -31,7 +31,7 @@ function ItemStatus({status, type, time}) {
 
   return (
     <View style={styles.container}>
-      <Octicons name="clock" size={19} color={getColor()}></Octicons>
+      <Octicons name="clock" size={18} color={getColor()}></Octicons>
       <AppText style={[styles.text, {color: getColor()}]}>{getStatusText()}</AppText>
     </View>
   );
@@ -45,7 +45,7 @@ const getStyles = (theme) =>
       gap: 10,
     },
     text: {
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold",
     },
   });

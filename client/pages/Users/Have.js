@@ -19,30 +19,45 @@ import ItemRating from "../../components/ItemRating";
 import ItemCondition from "../../components/ItemCondition";
 import RowLableCont from "../../components/RowLableCont";
 import PrimaryBtn from "../../components/PrimaryBtn";
+import Post from "../../components/Post";
 
 function Have(props) {
   const styles = useThemedStyles(getStyles);
   return (
     <SafeScreen>
       <SearchBar></SearchBar>
-      <ScrollView style={styles.container}>
-        <PostComponent>
-          <TopOfPost name={"Hasan Alasker"} date={"14 /12 /2025"}></TopOfPost>
-          <ItmeImage></ItmeImage>
-          <ItemNameAndCat
-            itemName={"Outdoor Table"}
-            itemCat={"Events"}
-          ></ItemNameAndCat>
-          <LableContainer>
-            <Location location={"Al-bayader"}></Location>
-            <ItemStatus status={"available"} time={"2 Days"}></ItemStatus>
-            <RowLableCont>
-              <ItemRating rating={5}></ItemRating>
-              <ItemCondition condition={"Brand new"}></ItemCondition>
-            </RowLableCont>
-            <PrimaryBtn title={'Request'}></PrimaryBtn>
-          </LableContainer>
-        </PostComponent>
+      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
+        <Post
+          profilePic={require('../../assets/Pics/hasan.png')}
+          name={"Hasan Alasker"}
+          date={"12/ 1/ 2026"}
+          image={require('../../assets/Pics/lm.png')}
+          itemName={"Electric saw"}
+          itemCat={'Tools'}
+          area={"Jabal al kursi"}
+          status={"taken"}
+          rating={4.9}
+          condition={"Slightly used"}
+          title={"Request"}
+          time={""}
+          onPressBtn={''}
+          onPressThree={''}
+        ></Post>
+        <Post
+          name={"Yazan Nabas"}
+          date={"12/ 1/ 2026"}
+          image={require('../../assets/Pics/image.png')}
+          itemName={"Lawn mower"}
+          itemCat={'Garden'}
+          area={"Al madinah al munawara Street"}
+          status={"available"}
+          rating={2.5}
+          condition={"Heavily used"}
+          title={"Request"}
+          time={""}
+          onPressBtn={''}
+          onPressThree={''}
+        ></Post>
       </ScrollView>
       <Navbar></Navbar>
     </SafeScreen>
@@ -53,7 +68,7 @@ const getStyles = (theme) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingBottom:100
+      
     },
   });
 

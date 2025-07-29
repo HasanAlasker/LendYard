@@ -5,14 +5,14 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
 
-function Location({ location }) {
+function Location({ area }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   return (
     <View style={styles.container}>
-      <Octicons name="location" size={22} color={theme.purple}></Octicons>
-      <AppText style={styles.text}>{location}</AppText>
+      <Octicons name="location" size={20} color={theme.purple}></Octicons>
+      <AppText style={styles.text}>{area}</AppText>
     </View>
   );
 }
@@ -25,7 +25,7 @@ const getStyles = (theme) =>
       gap: 10,
     },
     text: {
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold",
       color: theme.purple,
     },

@@ -25,13 +25,23 @@
 
 ---
 
+
 ## ✨ Key Features
 
 - 📦 **List Items for Lending**  
+  Add photos, categories, and descriptions with ease.
+
 - 🙋‍♂️ **Request to Borrow**  
-- 💬 **Push Notifications**  
+  Borrowers can request items for a specific duration.
+
+- 💬 **Notifications**  
+  Get notified for requests, status updates, and reminders.
+
 - 🌟 **Review System**  
-- 🔐 **User Authentication**
+  Rate and review users after each transaction.
+
+- 🔐 **Authentication**  
+  Secure user registration and login.
 
 ---
 

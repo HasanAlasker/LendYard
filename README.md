@@ -1,14 +1,13 @@
 # 🌿 LendYard
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Built%20With-React%20Native-61dafb?style=for-the-badge&logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/Powered%20By-Expo-000020?style=for-the-badge&logo=expo&logoColor=white" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Open--Source-Yes-brightgreen?style=for-the-badge" />
-</p>
-
 > **Give what you can. Borrow what you need.**  
 > Empowering local communities through smarter sharing.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Built%20With-React%20Native-61dafb?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Powered%20By-Expo-000020?style=for-the-badge&logo=expo&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-Private-red?style=for-the-badge" />
+</p>
 
 ---
 
@@ -29,19 +28,10 @@
 ## ✨ Key Features
 
 - 📦 **List Items for Lending**  
-  Add photos, categories, and descriptions with ease.
-
 - 🙋‍♂️ **Request to Borrow**  
-  Borrowers can request items for a specific duration.
-
-- 💬 **Notifications**  
-  Get notified for requests, status updates, and reminders.
-
+- 💬 **Push Notifications**  
 - 🌟 **Review System**  
-  Rate and review users after each transaction.
-
-- 🔐 **Authentication**  
-  Secure user registration and login.
+- 🔐 **User Authentication**
 
 ---
 
@@ -64,17 +54,11 @@
 
 ---
 
-## 🚫 Contributing
+## 🔒 Licensing & Usage
 
-> **Notice:**  
-> LendYard is a graduation project by **Hasan Alasker**.  
-> External contributions are currently **not accepted** due to university policy.
-
----
-
-## 📄 License
-
-This project is licensed under the [**MIT License**](https://opensource.org/licenses/MIT).
+> **LendYard is a private, closed-source project.**  
+> Redistribution, reuse, or copying of code and design elements is **strictly prohibited**.  
+> Created as a graduation project by **Hasan Alasker**.
 
 ---
 

@@ -1,0 +1,28 @@
+import React from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import useThemedStyles from "../hooks/useThemedStyles";
+import { useTheme } from "../config/ThemeContext";
+import { Feather } from "@expo/vector-icons";
+
+function RedCircle({ onPress }) {
+  const styles = useThemedStyles(getStyles);
+  const { theme } = useTheme();
+
+  return <View style={styles.container}></View>;
+}
+
+const getStyles = (theme) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: theme.red,
+      width: 20,
+      height: 20,
+      borderRadius: "50%",
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: theme.background,
+      borderWidth: 2,
+    },
+  });
+
+export default RedCircle;

@@ -1,24 +1,9 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+
+import { View, StyleSheet} from "react-native";
 import Navbar from "../../components/Navbar";
-import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "../../components/SearchBar";
-import FullScreen from "../../components/FullScreen";
 import SafeScreen from "../../components/SafeScreen";
-import PostComponent from "../../components/PostComponent";
 import useThemedStyles from "../../hooks/useThemedStyles";
-import AppText from "../../config/AppText";
-import { Feather } from "@expo/vector-icons";
-import TopOfPost from "../../components/TopOfPost";
-import ItmeImage from "../../components/ItmeImage";
-import ItemNameAndCat from "../../components/ItemNameAndCat";
-import Location from "../../components/Location";
-import ItemStatus from "../../components/ItemStatus";
-import LableContainer from "../../components/LableContainer";
-import ItemRating from "../../components/ItemRating";
-import ItemCondition from "../../components/ItemCondition";
-import RowLableCont from "../../components/RowLableCont";
-import PrimaryBtn from "../../components/PrimaryBtn";
 import Post from "../../components/Post";
 import ScrollScreen from "../../components/ScrollScreen";
 

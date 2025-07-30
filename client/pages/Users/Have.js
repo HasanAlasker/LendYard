@@ -32,8 +32,8 @@ function Have(props) {
           name={"Hasan Alasker"}
           date={"12/ 1/ 2026"}
           image={require('../../assets/Pics/lm.png')}
-          itemName={"Electric saw"}
-          itemCat={'Tools'}
+          itemName={"Lawn mower"}
+          itemCat={'Garden'}
           area={"Jabal al kursi"}
           status={"taken"}
           rating={4.9}
@@ -47,8 +47,8 @@ function Have(props) {
           name={"Yazan Nabas"}
           date={"12/ 1/ 2026"}
           image={require('../../assets/Pics/image.png')}
-          itemName={"Lawn mower"}
-          itemCat={'Garden'}
+          itemName={"Electric saw"}
+          itemCat={'Tools'}
           area={"Al madinah al munawara Street"}
           status={"available"}
           rating={2.5}

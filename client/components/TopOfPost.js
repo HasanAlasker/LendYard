@@ -49,7 +49,7 @@ const getStyles = (theme) =>
     date: {
       fontSize: 14,
       color: theme.sec_text,
-      fontWeight: "bold",
+      fontWeight:'600'
     },
     topPart: {
       flexDirection: "row",

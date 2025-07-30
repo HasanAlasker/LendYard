@@ -20,13 +20,14 @@ import ItemCondition from "../../components/ItemCondition";
 import RowLableCont from "../../components/RowLableCont";
 import PrimaryBtn from "../../components/PrimaryBtn";
 import Post from "../../components/Post";
+import ScrollScreen from "../../components/ScrollScreen";
 
 function Have(props) {
   const styles = useThemedStyles(getStyles);
   return (
     <SafeScreen>
       <SearchBar></SearchBar>
-      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollScreen>
         <Post
           profilePic={require('../../assets/Pics/hasan.png')}
           name={"Hasan Alasker"}
@@ -58,7 +59,7 @@ function Have(props) {
           onPressBtn={''}
           onPressThree={''}
         ></Post>
-      </ScrollView>
+      </ScrollScreen>
       <Navbar></Navbar>
     </SafeScreen>
   );
@@ -67,7 +68,6 @@ function Have(props) {
 const getStyles = (theme) =>
   StyleSheet.create({
     container: {
-      flex: 1,
       
     },
   });

@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import AppText from '../../client/config/AppText'
 
-function FullScreen(props) {
+function FullScreen({children}) {
   return (
     <View style={styles.container}>
-        
+        {children}
     </View>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
@@ -27,14 +27,14 @@ function SearchBar(props) {
             style={styles.input}
           />
         </View>
-        <View style={styles.filter}>
+        <TouchableOpacity style={styles.filter}>
           <MaterialIcons
             name="tune"
             size={22}
             color={theme.purple}
             
           ></MaterialIcons>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

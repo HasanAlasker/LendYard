@@ -28,6 +28,7 @@ function Have(props) {
           time={""}
           onPressBtn={''}
           onPressThree={''}
+          isDisabled={false}
         ></Post>
         <Post
           name={"Yazan Nabas"}
@@ -43,6 +44,7 @@ function Have(props) {
           time={""}
           onPressBtn={''}
           onPressThree={''}
+          isDisabled={false}
         ></Post>
       </ScrollScreen>
       <Navbar></Navbar>

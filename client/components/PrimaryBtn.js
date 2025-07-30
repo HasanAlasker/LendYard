@@ -2,11 +2,18 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import AppText from '../config/AppText';
 import useThemedStyles from '../hooks/useThemedStyles';
+import { useTheme } from "../config/ThemeContext";
 
-function PrimaryBtn({title, onPress}) {
-    const styles = useThemedStyles(getStyles)
+function PrimaryBtn({title, onPress, isDisabled}) {
+  const { theme } = useTheme();
+  const styles = useThemedStyles(getStyles)
+
+  const disableButton = ()=>{
+    if(isDisabled===true) return theme.ghost
+    else return theme.purple
+  }
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity disabled={isDisabled} style={[styles.container, {backgroundColor: disableButton()}]}>
         <AppText style={styles.text}>{title}</AppText>
     </TouchableOpacity>
   );

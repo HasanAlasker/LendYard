@@ -9,6 +9,8 @@ export const lightTheme = {
     'always_white':'white',
     'gold':'#FFBF00',
     'green':'#09B700',
+    'ghost':'#ac2fff77',
+
 
     'card1':'#FFE188',
     'card2':'#FF8888',
@@ -31,6 +33,7 @@ export const darkTheme = {
     'always_white':'white',
     'gold':'#FFBF00',
     'green':'#09B700',
+    'ghost':'#ac2fff77',
     
     'card1':'#FFE188',
     'card2':'#FF8888',

@@ -13,7 +13,7 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import PostComponent from "../components/PostComponent";
 import useThemedStyles from "../hooks/useThemedStyles";
 
-function Post({profilePic, name, date, image, itemName, itemCat, area, status, rating,time, condition, title, onPressBtn, onPressThree}) {
+function Post({profilePic, name, date, image, itemName, itemCat, area, status, rating,time, condition, title, onPressBtn, onPressThree, isDisabled}) {
   const styles = useThemedStyles(getStyles);
 
   return (
@@ -31,7 +31,7 @@ function Post({profilePic, name, date, image, itemName, itemCat, area, status, r
           <ItemRating rating={rating}></ItemRating>
           <ItemCondition condition={condition}></ItemCondition>
         </RowLableCont>
-        <PrimaryBtn title={title} onPress={onPressBtn}></PrimaryBtn>
+        <PrimaryBtn title={title} onPress={onPressBtn} isDisabled={isDisabled}></PrimaryBtn>
       </LableContainer>
     </PostComponent>
   );

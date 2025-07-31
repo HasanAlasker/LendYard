@@ -10,7 +10,7 @@ function EditBtn({ onPress }) {
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Feather name="edit-3" size={20} color={theme.always_white}></Feather>
+      <Feather name="edit-3" size={22} color={theme.always_white}></Feather>
     </TouchableOpacity>
   );
 }
@@ -20,13 +20,16 @@ const getStyles = (theme) =>
     container: {
       backgroundColor: theme.purple,
       padding: 5,
-      width: 40,
-      height: 40,
+      width: 45,
+      height: 45,
       borderRadius: "50%",
       justifyContent: "center",
       alignItems: "center",
       borderColor: theme.background,
       borderWidth: 2,
+
+      bottom:45,
+      left:105
     },
   });
 

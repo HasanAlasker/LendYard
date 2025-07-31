@@ -28,12 +28,12 @@ const getStyles = (theme) =>
       paddingVertical:6,
       paddingHorizontal:12,
       borderRadius:20,
-      alignSelf:'flex-start'
+      alignSelf:'center'
     },
     text: {
       fontWeight: "bold",
       color: theme.always_white,
-      fontSize:20
+      fontSize:18
     },
   });
 

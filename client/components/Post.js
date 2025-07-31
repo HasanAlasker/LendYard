@@ -18,7 +18,7 @@ function Post({profilePic, name, date, image, itemName, itemCat, area, status, r
 
   return (
     <PostComponent style={styles.post}>
-      <TopOfPost image={profilePic} name={name} date={date} onPress={onPressThree}></TopOfPost>
+      <TopOfPost image={profilePic} name={name} date={date} onPressThree={onPressThree}></TopOfPost>
       <ItmeImage source={image}></ItmeImage>
       <ItemNameAndCat
         itemName={itemName}

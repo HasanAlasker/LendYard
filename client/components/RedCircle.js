@@ -4,7 +4,7 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import { Feather } from "@expo/vector-icons";
 
-function RedCircle({ onPress }) {
+function RedCircle() {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
@@ -22,6 +22,9 @@ const getStyles = (theme) =>
       alignItems: "center",
       borderColor: theme.background,
       borderWidth: 2,
+
+      bottom:50,
+      left:35
     },
   });
 

@@ -32,7 +32,8 @@ const getStyles = (theme) =>  StyleSheet.create({
         justifyContent:'center',
         alignContent:'center',
         columnGap:10,
-        overflow:'hidden'
+        overflow:'hidden',
+        marginTop:30
     }
     ,text:{
         flexWrap:'nowrap',

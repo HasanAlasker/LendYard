@@ -27,7 +27,7 @@ function Have(props) {
           title={"Request"}
           time={""}
           onPressBtn={''}
-          onPressThree={''}
+          onPressThree={()=>{console.log(3)}}
           isDisabled={false}
         ></Post>
         <Post
@@ -38,12 +38,12 @@ function Have(props) {
           itemCat={'Tools'}
           area={"Al madinah al munawara Street"}
           status={"available"}
-          rating={2.5}
+          rating={'Unrated'}
           condition={"Heavily used"}
           title={"Request"}
           time={""}
           onPressBtn={''}
-          onPressThree={''}
+          onPressThree={()=>{console.log(3)}}
           isDisabled={false}
         ></Post>
       </ScrollScreen>

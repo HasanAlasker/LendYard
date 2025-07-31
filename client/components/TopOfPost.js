@@ -4,7 +4,7 @@ import AppText from "../config/AppText";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 
-function TopOfPost({ name, date, image ,onPress}) {
+function TopOfPost({ name, date, image ,onPressThree, onPressProfile}) {
   const styles = useThemedStyles(getStyles);
   return (
     <View style={styles.topPart}>
@@ -17,7 +17,7 @@ function TopOfPost({ name, date, image ,onPress}) {
           <AppText style={styles.date}>{date}</AppText>
         </View>
       </View>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPressThree}>
         <Feather name="more-vertical" size={30} style={styles.more}></Feather>
       </TouchableOpacity>
     </View>

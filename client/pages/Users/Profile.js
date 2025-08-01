@@ -5,7 +5,7 @@ import ScrollScreen from "../../components/ScrollScreen";
 import TopChunkProfile from "../../components/TopChunkProfile";
 import Post from "../../components/Post";
 
-function Profile(props) {
+function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) {
   return (
     <SafeScreen>
       <ScrollScreen>

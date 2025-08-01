@@ -11,6 +11,8 @@ import Have from "./pages/Users/Have";
 import Post from "./pages/Users/Post";
 import Book from "./pages/Users/Book";
 import Profile from "./pages/Users/Profile";
+import Requests from './pages/Users/Requests'
+import EditProfile from "./pages/Users/EditProfile";
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => (
@@ -23,6 +25,8 @@ const StackNavigator = () => (
     <Stack.Screen name="Post" component={Post}></Stack.Screen>
     <Stack.Screen name="Book" component={Book}></Stack.Screen>
     <Stack.Screen name="Profile" component={Profile}></Stack.Screen>
+    <Stack.Screen name="Requests" component={Requests}></Stack.Screen>
+    <Stack.Screen name="EditProfile" component={EditProfile}></Stack.Screen>
   </Stack.Navigator>
 );
 

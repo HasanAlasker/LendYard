@@ -4,14 +4,20 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import RedCircle from "./RedCircle";
+import { useNavigation } from "@react-navigation/native";
 
 function NotificationBtn({ onPress, isActive }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
+  const navigation = useNavigation()
+  const navigateTo=()=>{
+    navigation.navigate('Requests')
+  }
+
   return (
     <View>
-      <TouchableOpacity onPress={onPress} style={styles.container}>
+      <TouchableOpacity onPress={navigateTo} style={styles.container}>
         <Feather name="bell" size={27} color={theme.always_white}></Feather>
       </TouchableOpacity>
       {isActive && <RedCircle></RedCircle>}

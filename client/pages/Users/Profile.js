@@ -1,22 +1,9 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
-import FullScreen from "../../components/FullScreen";
 import Navbar from "../../components/Navbar";
-import SeparatorComp from "../../components/SeparatorComp";
-import Post from "../../components/Post";
 import ScrollScreen from "../../components/ScrollScreen";
-import NotificationBtn from "../../components/NotificationBtn";
-import SettingsBtn from "../../components/SettingsBtn";
-import EditBtn from "../../components/EditBtn";
-import UserRate from "../../components/UserRate";
-import RedCircle from "../../components/RedCircle";
-import BackBtn from "../../components/BackBtn";
-import BlankBtn from "../../components/BlankBtn";
-import BigPicAndUsername from "../../components/BigPicAndUsername";
-import MyProfileContainer from "../../components/MyProfileContainer";
-import UserPicAndRateContainer from "../../components/UserPicAndRateContainer";
 import TopChunkProfile from "../../components/TopChunkProfile";
+import Post from "../../components/Post";
 
 function Profile(props) {
   return (
@@ -25,11 +12,71 @@ function Profile(props) {
         <TopChunkProfile
           isNotification={true}
           myProfile={true}
-          userName={'Hasan Alasker'}
+          userName={"Hasan Alasker"}
           userPic={require("../../assets/Pics/hasan.png")}
-          userRate={'5'}
-          sep={'Items'}
+          userRate={"5"}
+          sep={"Items"}
         ></TopChunkProfile>
+        <Post
+          area={"Shafa badran"}
+          condition={"Brand new"}
+          date={"12/ 1/ 2024"}
+          name={"Hasan Alasker"}
+          profilePic={require("../../assets/Pics/hasan.png")}
+          image={require('../../assets/Pics/tv.png')}
+          itemName={"Television"}
+          itemCat={"Electronics"}
+          isMine={true}
+          status={"requested"}
+          rating={"4.3"}
+          iBorrowed={false}
+          iRequested={false}
+        ></Post>
+        <Post
+          area={"Shafa badran"}
+          condition={"Brand new"}
+          date={"12/ 1/ 2024"}
+          name={"Hasan Alasker"}
+          profilePic={require("../../assets/Pics/hasan.png")}
+          image={require('../../assets/Pics/tv.png')}
+          itemName={"Television"}
+          itemCat={"Electronics"}
+          isMine={true}
+          status={"taken"}
+          rating={"4.3"}
+          iBorrowed={false}
+          iRequested={false}
+        ></Post>
+        <Post
+          area={"Shafa badran"}
+          condition={"Brand new"}
+          date={"12/ 1/ 2024"}
+          name={"Hasan Alasker"}
+          profilePic={require("../../assets/Pics/hasan.png")}
+          image={require('../../assets/Pics/tv.png')}
+          itemName={"Television"}
+          itemCat={"Electronics"}
+          isMine={true}
+          status={"available"}
+          rating={"4.3"}
+          iBorrowed={false}
+          iRequested={false}
+        ></Post>
+        <Post
+          area={"Shafa badran"}
+          condition={"Brand new"}
+          date={"12/ 1/ 2024"}
+          name={"Hasan Alasker"}
+          profilePic={require("../../assets/Pics/hasan.png")}
+          image={require('../../assets/Pics/tv.png')}
+          itemName={"Television"}
+          itemCat={"Electronics"}
+          isMine={true}
+          status={"disabled"}
+          rating={"4.3"}
+          iBorrowed={false}
+          iRequested={false}
+        ></Post>
       </ScrollScreen>
       <Navbar></Navbar>
     </SafeScreen>

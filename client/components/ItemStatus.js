@@ -14,6 +14,7 @@ function ItemStatus({status, type, time}) {
         case 'available': return theme.green
         case 'taken': return theme.red
         case 'disabled': return theme.sec_text
+        case 'requested': return theme.gold
         case 'late': return theme.red
         case 'early': return theme.green 
     }
@@ -23,6 +24,7 @@ function ItemStatus({status, type, time}) {
     switch(status) {
       case "available": return "Available";
       case "disabled": return "Disabled"; 
+      case 'requested': return "Pending"
       case "late": return `${time} late`;
       case "early": return `${time} left`;
       default: return "Taken";

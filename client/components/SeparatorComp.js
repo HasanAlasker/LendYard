@@ -33,7 +33,8 @@ const getStyles = (theme) =>  StyleSheet.create({
         alignContent:'center',
         columnGap:10,
         overflow:'hidden',
-        marginTop:30
+        marginTop:30,
+        marginBottom:10
     }
     ,text:{
         flexWrap:'nowrap',

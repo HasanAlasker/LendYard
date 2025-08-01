@@ -35,7 +35,7 @@ function SquareCard({ icon, name, cardnum }) {
     <TouchableOpacity style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       <MaterialCommunityIcons
         name={icon}
-        size={115}
+        size={90}
         color={theme.always_white}
       ></MaterialCommunityIcons>
       <AppText style={[styles.text]}>{name}</AppText>

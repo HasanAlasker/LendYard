@@ -14,7 +14,7 @@ function ItemStatus({status, type, time}) {
         case 'available': return theme.green
         case 'taken': return theme.red
         case 'disabled': return theme.sec_text
-        case 'requested': return theme.gold
+        case 'requested': return theme.orange
         case 'late': return theme.red
         case 'early': return theme.green 
     }

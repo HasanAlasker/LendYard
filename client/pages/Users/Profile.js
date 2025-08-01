@@ -18,7 +18,7 @@ function Profile(props) {
           sep={"Items"}
         ></TopChunkProfile>
         <Post
-          area={"Shafa badran"}
+          area={"Al Jandaweel"}
           condition={"Brand new"}
           date={"12/ 1/ 2024"}
           name={"Hasan Alasker"}
@@ -33,7 +33,7 @@ function Profile(props) {
           iRequested={false}
         ></Post>
         <Post
-          area={"Shafa badran"}
+          area={"Al Jandaweel"}
           condition={"Brand new"}
           date={"12/ 1/ 2024"}
           name={"Hasan Alasker"}
@@ -48,7 +48,7 @@ function Profile(props) {
           iRequested={false}
         ></Post>
         <Post
-          area={"Shafa badran"}
+          area={"Al Jandaweel"}
           condition={"Brand new"}
           date={"12/ 1/ 2024"}
           name={"Hasan Alasker"}
@@ -63,7 +63,7 @@ function Profile(props) {
           iRequested={false}
         ></Post>
         <Post
-          area={"Shafa badran"}
+          area={"Al Jandaweel"}
           condition={"Brand new"}
           date={"12/ 1/ 2024"}
           name={"Hasan Alasker"}

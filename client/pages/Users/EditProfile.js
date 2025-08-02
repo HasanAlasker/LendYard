@@ -2,6 +2,10 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import TopChunkProfile from "../../components/TopChunkProfile";
+import DropBox from "../../components/DropBox";
+import InputBox from "../../components/InputBox";
+import PrimaryBtn from '../../components/PrimaryBtn'
+import FormBtn from "../../components/FormBtn";
 
 function EditProfile({ userName, image, number, email, rating, sep }) {
   return (
@@ -14,6 +18,10 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
         onPressPic={()=>{console.log('hello hasan')}}
         sep={"Edit Info"}
       ></TopChunkProfile>
+      <InputBox placeholder={'Name'} penOn={true}></InputBox>
+      <InputBox placeholder={'Phone'} penOn={true}></InputBox>
+      <InputBox placeholder={'Email'} penOn={true}></InputBox>
+      <FormBtn title={"Save"}></FormBtn>
     </SafeScreen>
   );
 }

@@ -32,7 +32,6 @@ function SearchBar(props) {
             name="tune"
             size={22}
             color={theme.purple}
-            
           ></MaterialIcons>
         </TouchableOpacity>
       </View>
@@ -44,12 +43,12 @@ const getStyles = (theme) =>
   StyleSheet.create({
     searchbar: {
       width: "100%",
-      paddingTop:5,
-      borderBottomRightRadius:30,
-      borderBottomLeftRadius:30,
-      zIndex:100,
-      paddingBottom:25,
-      backgroundColor:theme.backgroundColor
+      paddingTop: 5,
+      borderBottomRightRadius: 30,
+      borderBottomLeftRadius: 30,
+      zIndex: 100,
+      paddingBottom: 25,
+      backgroundColor: theme.backgroundColor,
     },
     bigBox: {
       flexDirection: "row",
@@ -70,9 +69,7 @@ const getStyles = (theme) =>
       paddingVertical: 0,
       height: 40,
     },
-    icon: {
-      
-    },
+    icon: {},
     filter: {
       backgroundColor: theme.post,
       alignItems: "center",
@@ -87,6 +84,10 @@ const getStyles = (theme) =>
       fontWeight: "bold",
       fontSize: 16,
       height: 40,
+      textAlignVertical: "center",
+      margin: 0,
+      padding: 0,
+      flex: 1,
     },
   });
 

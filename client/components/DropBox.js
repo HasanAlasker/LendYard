@@ -38,7 +38,8 @@ const getStyles = (theme) =>
     text: {
       color: theme.purple,
       fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 16,
+      textAlignVertical:'center'
     },
     left:{
         flexDirection:'row',

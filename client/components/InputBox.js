@@ -39,7 +39,7 @@ const getStyles = (theme) =>
     text: {
       color: theme.purple,
       fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 16,
       flex:1,
       padding:0,
       margin:0,

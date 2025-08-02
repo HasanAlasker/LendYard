@@ -29,7 +29,8 @@ const getStyles = (theme) =>
       borderColor: theme.purple,
       marginBottom: 10,
       justifyContent:'center',
-      alignItems:'center'
+      alignItems:'center',
+      marginTop:15,
     },
     text:{
         fontSize:30,

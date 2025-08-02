@@ -5,12 +5,12 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
 
-function FormBtn({ title, }) {
+function FormBtn({ title, onPress }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <AppText style={styles.text}>{title}</AppText>
     </TouchableOpacity>
   );

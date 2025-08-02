@@ -10,6 +10,8 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
         userName={"Hasan Alasker"}
         userPic={require("../../assets/Pics/hasan.png")}
         userRate={5}
+        isPicDisabled={false}
+        onPressPic={()=>{console.log('hello hasan')}}
         sep={"Edit Info"}
       ></TopChunkProfile>
     </SafeScreen>

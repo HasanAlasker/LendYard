@@ -1,17 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import AppText from "../config/AppText";
 import useThemedStyles from "../hooks/useThemedStyles";
 import EditBtn from "./EditBtn";
 
-function BigPicAndUsername({ userName, userPic, isEdit }) {
+function BigPicAndUsername({ userName, userPic, isEdit, isPicDisabled=true, onPress }) {
   const styles = useThemedStyles(getStyles);
   return (
     <View style={styles.container}>
-      <View style={styles.imagePlaceholder}>
+      <TouchableOpacity disabled={isPicDisabled} onPress={onPress} style={styles.imagePlaceholder}>
         <Image style={styles.image} source={userPic}></Image>
         {isEdit && <EditBtn></EditBtn>}
-      </View>
+      </TouchableOpacity>
       <AppText style={styles.text}>{userName}</AppText>
     </View>
   );

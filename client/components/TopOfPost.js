@@ -57,7 +57,8 @@ const getStyles = (theme) =>
       alignItems: "center",
     },
     more:{
-        left:10
+        left:10,
+        color:theme.main_text
     },
     pic:{
       width: '100%',

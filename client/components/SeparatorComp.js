@@ -3,14 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import useThemedStyles from '../hooks/useThemedStyles';
 import { useTheme } from "../config/ThemeContext"; 
 
-function SeparatorComp({children, color='darker_gray'}) {
+function SeparatorComp({children, color='darker_gray', style}) {
 
     const styles = useThemedStyles(getStyles);
     const { theme } = useTheme();
     
     const thingcolors = theme[color] || color
     return (
-        <View style={styles.sep_cont}>
+        <View style={[styles.sep_cont, style]}>
             <View style={[styles.line, {backgroundColor:thingcolors}]}></View>
             {children && <Text style={[styles.text, {color:thingcolors}]}>{children}</Text>}
             {children && <View style={[styles.line, {backgroundColor:thingcolors}]}></View>}

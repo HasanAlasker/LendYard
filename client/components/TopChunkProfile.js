@@ -10,7 +10,7 @@ import SeparatorComp from './SeparatorComp';
 import BackBtn from './BackBtn';
 import BlankBtn from './BlankBtn';
 
-function TopChunkProfile({myProfile, isNotification, userName, userPic, userRate, sep, onPressPic, isPicDisabled}) {
+function TopChunkProfile({myProfile, isNotification, userName, userPic, userRate, sep, onPressPic, isPicDisabled, settingsPress}) {
   return (
     <View style={styles.container}>
         <MyProfileContainer>
@@ -25,7 +25,7 @@ function TopChunkProfile({myProfile, isNotification, userName, userPic, userRate
             ></BigPicAndUsername>
             <UserRate userRating={userRate}></UserRate>
           </UserPicAndRateContainer>
-          {myProfile ? <SettingsBtn></SettingsBtn> : <BlankBtn></BlankBtn>}
+          {myProfile ? <SettingsBtn onPress={settingsPress}></SettingsBtn> : <BlankBtn></BlankBtn>}
         </MyProfileContainer>
         <SeparatorComp>{sep}</SeparatorComp>
     </View>

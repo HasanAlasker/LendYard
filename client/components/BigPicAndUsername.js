@@ -40,7 +40,8 @@ const getStyles = (theme) =>
     text:{
         fontSize:28,
         fontWeight:'bold',
-        textAlign:'center'
+        textAlign:'center',
+        color:theme.main_text
     }
   });
 

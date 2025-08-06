@@ -58,7 +58,8 @@ const getStyles = (theme) => StyleSheet.create({
     fontWeight:'bold',
     width:'90%',
     marginHorizontal:'auto',
-    marginTop:40
+    marginTop:40,
+    color:theme.main_text
   }
 })
 

@@ -6,9 +6,16 @@ import TopChunkProfile from "../../components/TopChunkProfile";
 import Post from "../../components/Post";
 import SettingsMenu from "../../components/SettingsMenu";
 import { useState } from "react";
+import PostMenu from "../../components/PostMenu";
 
-function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) {
+function Profile({userName, isNotification, myProfile=true, userPic, userRate, sep}) {
   const [isMenu, setIsMenu]= useState(false)
+
+  const [isPostMenu, setIsPostMenu]= useState(false)
+  const handelPostMenu = () => {
+    setIsPostMenu(!isPostMenu)
+  }
+
 
   return (
     <SafeScreen>
@@ -16,7 +23,7 @@ function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) 
       <ScrollScreen>
         <TopChunkProfile
           isNotification={true}
-          myProfile={true}
+          myProfile={myProfile}
           userName={"Hasan Alasker"}
           userPic={require("../../assets/Pics/hasan.png")}
           userRate={"5"}
@@ -37,6 +44,7 @@ function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) 
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
+          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -52,6 +60,7 @@ function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) 
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
+          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -67,6 +76,7 @@ function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) 
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
+          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -82,8 +92,10 @@ function Profile({userName, isNotification, myProfile, userPic, userRate, sep}) 
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
+          onPressThree={handelPostMenu}
         ></Post>
       </ScrollScreen>
+      <PostMenu isVisible={isPostMenu} onClose={()=>{setIsPostMenu(false)}} isMine={myProfile}></PostMenu>
       <Navbar></Navbar>
     </SafeScreen>
   );

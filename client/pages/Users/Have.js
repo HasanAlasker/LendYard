@@ -6,9 +6,16 @@ import SafeScreen from "../../components/SafeScreen";
 import useThemedStyles from "../../hooks/useThemedStyles";
 import Post from "../../components/Post";
 import ScrollScreen from "../../components/ScrollScreen";
+import PostMenu from "../../components/PostMenu";
+import { useState } from "react";
 
 function Have(props) {
   const styles = useThemedStyles(getStyles);
+  const [isPostMenu, setIsPostMenu]= useState(false)
+  const handelMenu = () => {
+    setIsPostMenu(!isPostMenu)
+  }
+
   return (
     <SafeScreen>
       <SearchBar></SearchBar>
@@ -27,7 +34,7 @@ function Have(props) {
           title={"Request"}
           time={""}
           onPressBtn={''}
-          onPressThree={()=>{console.log(3)}}
+          onPressThree={handelMenu}
           isDisabled={false}
         ></Post>
         <Post
@@ -43,10 +50,11 @@ function Have(props) {
           title={"Request"}
           time={""}
           onPressBtn={''}
-          onPressThree={()=>{console.log(3)}}
+          onPressThree={handelMenu}
           isDisabled={false}
         ></Post>
       </ScrollScreen>
+      <PostMenu isVisible={isPostMenu} onClose={()=>{setIsPostMenu(false)}}></PostMenu>
       <Navbar></Navbar>
     </SafeScreen>
   );

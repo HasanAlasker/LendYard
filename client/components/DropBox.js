@@ -1,21 +1,36 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, TextInput, Modal } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Modal,
+  FlatList,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
-import BackContainer from '../components/BackContainer'
-import MenuBackBtn from '../components/MenuBackBtn'
+import BackContainer from "../components/BackContainer";
+import MenuBackBtn from "../components/MenuBackBtn";
+import MenuOption from "../components/MenuOption";
+import SeparatorComp from "../components/SeparatorComp";
 
-function DropBox({ placeholder, penOn }) {
+function DropBox({ placeholder, penOn, items, onSelectItem, selectedItem }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
+
 
   return (
     <>
-      <TouchableOpacity onPress={()=>{setModal(true)}} style={styles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          setModal(true);
+        }}
+        style={styles.container}
+      >
         <View style={styles.left}>
           {penOn && (
             <Feather name="edit-3" size={24} color={theme.purple}></Feather>
@@ -26,11 +41,31 @@ function DropBox({ placeholder, penOn }) {
       </TouchableOpacity>
 
       <Modal visible={modal} animationType="slide" transparent>
-          <View style={styles.modalContent}>
-            <BackContainer>
-              <MenuBackBtn onClose={()=>{setModal(false)}}></MenuBackBtn>
-            </BackContainer>
-          </View>
+        <View style={styles.modalContent}>
+          <BackContainer>
+            <MenuBackBtn
+              onClose={() => {
+                setModal(false);
+              }}
+            ></MenuBackBtn>
+          </BackContainer>
+
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => (
+              <MenuOption
+                text={item.label}
+                onPress={() => {
+                  setModal(false);
+                  onSelectItem(item);
+                }}
+              ></MenuOption>
+            )}
+            ItemSeparatorComponent={()=> <SeparatorComp style={styles.sep}></SeparatorComp>}
+            contentContainerStyle={styles.list}
+          ></FlatList>
+        </View>
       </Modal>
     </>
   );
@@ -62,10 +97,19 @@ const getStyles = (theme) =>
       gap: 10,
     },
     modalContent: {
-      backgroundColor: theme.post, 
+      backgroundColor: theme.post,
       borderRadius: 20,
-      flex:1,
+      flex: 1,
     },
+    list:{
+      width:'90%',
+      marginHorizontal:'auto'
+    },
+    sep:{
+      width:'100%',
+      marginTop:5,
+      marginBottom:5,
+    }
   });
 
 export default DropBox;

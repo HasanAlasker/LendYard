@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import SafeScreen from '../../components/SafeScreen';
 import ScrollScreen from '../../components/ScrollScreen';
 import Navbar from '../../components/Navbar';
-import BackBtn from '../../components/BackBtn';
 import DropBox from '../../components/DropBox';
-import BackContainer from '../../components/BackContainer';
 import AddImageBtn from '../../components/AddImageBtn';
 import FormBtn from '../../components/FormBtn';
 

@@ -10,7 +10,6 @@ import SquareCard from '../../components/SquareCard';
 import Navbar from '../../components/Navbar';
 import SafeScreen from '../../components/SafeScreen';
 
-
 function Home(props) {
   const styles = useThemedStyles(getStyles);
 

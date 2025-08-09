@@ -1,22 +1,38 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, TouchableOpacity, TextInput, Modal } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
+import BackContainer from '../components/BackContainer'
+import MenuBackBtn from '../components/MenuBackBtn'
 
 function DropBox({ placeholder, penOn }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
+  const [modal, setModal] = useState(false)
+
   return (
-    <TouchableOpacity style={styles.container}>
-      <View style={styles.left}>
-        {penOn && <Feather name="edit-3" size={24} color={theme.purple}></Feather>}
-        <AppText style={styles.text}>{placeholder}</AppText>
-      </View>
-      <Feather name="chevron-down" size={26} color={theme.purple}></Feather>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity onPress={()=>{setModal(true)}} style={styles.container}>
+        <View style={styles.left}>
+          {penOn && (
+            <Feather name="edit-3" size={24} color={theme.purple}></Feather>
+          )}
+          <AppText style={styles.text}>{placeholder}</AppText>
+        </View>
+        <Feather name="chevron-down" size={26} color={theme.purple}></Feather>
+      </TouchableOpacity>
+
+      <Modal visible={modal} animationType="slide" transparent>
+          <View style={styles.modalContent}>
+            <BackContainer>
+              <MenuBackBtn onClose={()=>{setModal(false)}}></MenuBackBtn>
+            </BackContainer>
+          </View>
+      </Modal>
+    </>
   );
 }
 
@@ -33,18 +49,23 @@ const getStyles = (theme) =>
       paddingHorizontal: 15,
       width: "90%",
       marginHorizontal: "auto",
-      marginTop:20
+      marginTop: 20,
     },
     text: {
       color: theme.purple,
       fontWeight: "bold",
       fontSize: 16,
-      textAlignVertical:'center'
+      textAlignVertical: "center",
     },
-    left:{
-        flexDirection:'row',
-        gap:10
-    }
+    left: {
+      flexDirection: "row",
+      gap: 10,
+    },
+    modalContent: {
+      backgroundColor: theme.post, 
+      borderRadius: 20,
+      flex:1,
+    },
   });
 
 export default DropBox;

@@ -30,7 +30,7 @@ const getStyles = (theme) =>
       marginBottom: 10,
       justifyContent:'center',
       alignItems:'center',
-      marginTop:15,
+      marginTop:25,
     },
     text:{
         fontSize:30,

@@ -13,7 +13,8 @@ import SeparatorComp from "./SeparatorComp";
 
 function SettingsMenu({ isVisible, onClose }) {
   const styles = useThemedStyles(getStyles);
-  const {toggleTheme} = useTheme()
+  const {toggleTheme, isDarkMode} = useTheme()
+  
   if (!isVisible) return null;
   return (
     <>
@@ -24,7 +25,7 @@ function SettingsMenu({ isVisible, onClose }) {
       <View style={styles.container}>
         <BackContainer>
           <MenuBackBtn onClose={onClose} />
-          <MenuOption text={"Change theme"} icon={"circle-half-full"} onPress={toggleTheme}/>
+          <MenuOption text={isDarkMode ? 'Light mode': 'Dark mode'} icon={"circle-half-full"} onPress={toggleTheme}/>
           <SeparatorComp style={styles.sep} />
           <MenuOption text={"Privacy policy"} icon={"shield-check-outline"} />
           <SeparatorComp style={styles.sep} />

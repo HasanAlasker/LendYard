@@ -102,18 +102,10 @@ const getStyles = (theme) =>
       paddingBottom: 13,
       borderTopRightRadius: 22,
       borderTopLeftRadius: 22,
-      height:73,
+      height: 73,
       width: "100%",
       zIndex: 100,
 
-      shadowColor: "#000000",
-      shadowOffset: {
-        width: 0,
-        height: -6,
-      },
-      // shadowOpacity:  0.20,
-      // shadowRadius: 5.62,
-      // elevation: 24
     },
     navbarBtn: {
       display: "flex",
@@ -134,14 +126,14 @@ const getStyles = (theme) =>
     active: {
       color: theme.purple,
     },
-    bottom:{
-        position:'absolute'
-        ,width:'100%',
-        backgroundColor:theme.post,
-        height:50,
-        bottom:0,
-        zIndex:90
-    }
+    bottom: {
+      position: "absolute",
+      width: "100%",
+      backgroundColor: theme.post,
+      height: 50,
+      bottom: 0,
+      zIndex: 90,
+    },
   });
 
 export default Navbar;

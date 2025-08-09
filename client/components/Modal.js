@@ -6,12 +6,11 @@ import { useTheme } from "../config/ThemeContext";
 import Constants from "expo-constants";
 
 import BackContainer from "../components/BackContainer";
-import BackBtn from "./BackBtn";
 import MenuBackBtn from "./MenuBackBtn";
 import MenuOption from "./MenuOption";
 import SeparatorComp from "./SeparatorComp";
 
-function PostMenu({ isVisible, onClose, isMine }) {
+function Modal({ isVisible, onClose, isMine }) {
   const styles = useThemedStyles(getStyles);
   const { toggleTheme } = useTheme();
 
@@ -25,11 +24,7 @@ function PostMenu({ isVisible, onClose, isMine }) {
       <View style={styles.container}>
         <BackContainer>
           <MenuBackBtn onClose={onClose} />
-          <MenuOption text={"Share post"} icon={"share"} />
-          <SeparatorComp style={styles.sep} />
-          {isMine && <MenuOption text={"Edit post"} icon={"pencil"} />}
-          {isMine && <SeparatorComp style={styles.sep} />}
-          {isMine ? <MenuOption text={"Delete post"} icon={"delete"} color={"red"} />: <MenuOption text={"Report post"} icon={"bullhorn-variant"} color={"red"} />}
+          
         </BackContainer>
       </View>
     </>
@@ -63,4 +58,4 @@ const getStyles = (theme) =>
     },
   });
 
-export default PostMenu;
+export default Modal;

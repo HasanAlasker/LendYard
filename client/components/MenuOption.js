@@ -23,11 +23,13 @@ function MenuOption({ text, icon, color, onPress }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <AppText style={[styles.text, { color: renderColor() }]}>{text}</AppText>
-      <MaterialCommunityIcons
-        name={icon}
-        size={26}
-        color={renderColor()}
-      ></MaterialCommunityIcons>
+      {icon && (
+        <MaterialCommunityIcons
+          name={icon}
+          size={26}
+          color={renderColor()}
+        ></MaterialCommunityIcons>
+      )}
     </TouchableOpacity>
   );
 }

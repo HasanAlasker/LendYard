@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import DropBox from '../../components/DropBox';
 import AddImageBtn from '../../components/AddImageBtn';
 import FormBtn from '../../components/FormBtn';
+import {areas, categories, items, cities, condition, getAreasByCity, getItemsByCategory } from '../../constants/DropOptions'
 
 function Post(props) {
   return (
@@ -13,11 +14,11 @@ function Post(props) {
       <ScrollScreen>
         {/* <BackContainer><BackBtn></BackBtn></BackContainer> */}
         <AddImageBtn></AddImageBtn>
-        <DropBox placeholder={"Category"}></DropBox>
-        <DropBox placeholder={"Item"}></DropBox>
-        <DropBox placeholder={"City"}></DropBox>
-        <DropBox placeholder={"Area"}></DropBox>
-        <DropBox placeholder={"Condition"}></DropBox>
+        <DropBox placeholder={"Category"} items={categories}></DropBox>
+        <DropBox placeholder={"Item"} items={items}></DropBox>
+        <DropBox placeholder={"City"} items={cities}></DropBox>
+        <DropBox placeholder={"Area"} items={areas}></DropBox>
+        <DropBox placeholder={"Condition"} items={condition}></DropBox>
         <FormBtn title={"Post"}></FormBtn>
       </ScrollScreen>
       <Navbar></Navbar>

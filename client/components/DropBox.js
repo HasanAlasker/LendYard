@@ -42,7 +42,7 @@ function DropBox({ placeholder, penOn, items, onSelectItem, selectedItem }) {
 
       <Modal visible={modal} animationType="slide" transparent>
         <View style={styles.modalContent}>
-          <BackContainer>
+          <BackContainer style={styles.back}>
             <MenuBackBtn
               onClose={() => {
                 setModal(false);
@@ -73,6 +73,10 @@ function DropBox({ placeholder, penOn, items, onSelectItem, selectedItem }) {
 
 const getStyles = (theme) =>
   StyleSheet.create({
+    back:{
+      marginVertical:0,
+      marginTop:25
+    },
     container: {
       flexDirection: "row",
       borderRadius: 18,
@@ -103,7 +107,8 @@ const getStyles = (theme) =>
     },
     list:{
       width:'90%',
-      marginHorizontal:'auto'
+      marginHorizontal:'auto',
+      paddingBottom:20
     },
     sep:{
       width:'100%',

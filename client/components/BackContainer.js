@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-function BackContainer({children}) {
+function BackContainer({children, style}) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
         {children}
     </View>
   );

@@ -11,7 +11,7 @@ import Have from "./pages/Users/Have";
 import Post from "./pages/Users/Post";
 import Book from "./pages/Users/Book";
 import Profile from "./pages/Users/Profile";
-import Requests from './pages/Users/Requests'
+import Requests from "./pages/Users/Requests";
 import EditProfile from "./pages/Users/EditProfile";
 
 const Stack = createNativeStackNavigator();
@@ -32,11 +32,12 @@ const StackNavigator = () => (
 );
 
 const AppContent = () => {
-  const { isDarkMode } = useTheme();
-  
+  const { isDarkMode } = useTheme(); // I put it here because it needs to be inside
+  // the theme provider to work other wise it will say "isDarkMode undefined"
+
   return (
     <>
-      <StatusBar style={isDarkMode ? 'light' : 'dark'} />
+      <StatusBar style={isDarkMode ? "light" : "dark"} />
       <NavigationContainer>
         <StackNavigator />
       </NavigationContainer>

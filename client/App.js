@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-import { ThemeProvider } from "./config/ThemeContext";
+import { ThemeProvider, useTheme } from "./config/ThemeContext";
 import Home from "./pages/Users/Home";
 import Have from "./pages/Users/Have";
 import Post from "./pages/Users/Post";
@@ -15,6 +15,7 @@ import Requests from './pages/Users/Requests'
 import EditProfile from "./pages/Users/EditProfile";
 
 const Stack = createNativeStackNavigator();
+
 const StackNavigator = () => (
   <Stack.Navigator
     initialRouteName="Home"
@@ -30,13 +31,24 @@ const StackNavigator = () => (
   </Stack.Navigator>
 );
 
+const AppContent = () => {
+  const { isDarkMode } = useTheme();
+  
+  return (
+    <>
+      <StatusBar style={isDarkMode ? 'light' : 'dark'} />
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+    </>
+  );
+};
+
 export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <NavigationContainer>
-          <StackNavigator></StackNavigator>
-        </NavigationContainer>
+        <AppContent />
       </ThemeProvider>
     </SafeAreaProvider>
   );

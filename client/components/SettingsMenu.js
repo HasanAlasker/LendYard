@@ -1,12 +1,10 @@
 import React from "react";
 import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
-import { ThemeContext } from "@react-navigation/native";
 import { useTheme } from "../config/ThemeContext";
 import Constants from "expo-constants";
 
 import BackContainer from "../components/BackContainer";
-import BackBtn from "./BackBtn";
 import MenuBackBtn from "./MenuBackBtn";
 import MenuOption from "./MenuOption";
 import SeparatorComp from "./SeparatorComp";

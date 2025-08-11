@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import MyProfileContainer from './MyProfileContainer';
 import NotificationBtn from './NotificationBtn';

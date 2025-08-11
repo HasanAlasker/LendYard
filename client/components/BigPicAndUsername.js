@@ -1,4 +1,4 @@
-import React from "react";
+
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import AppText from "../config/AppText";
 import useThemedStyles from "../hooks/useThemedStyles";

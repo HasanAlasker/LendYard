@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import ScrollScreen from "../../components/ScrollScreen";

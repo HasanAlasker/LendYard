@@ -1,9 +1,7 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
-import AppText from "../config/AppText";
 
 function InputBox({ placeholder, penOn, icon, value }) {
   const styles = useThemedStyles(getStyles);

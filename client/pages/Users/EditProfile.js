@@ -1,10 +1,8 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import TopChunkProfile from "../../components/TopChunkProfile";
-import DropBox from "../../components/DropBox";
 import InputBox from "../../components/InputBox";
-import PrimaryBtn from '../../components/PrimaryBtn'
 import FormBtn from "../../components/FormBtn";
 
 function EditProfile({ userName, image, number, email, rating, sep }) {

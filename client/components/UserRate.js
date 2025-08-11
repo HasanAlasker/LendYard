@@ -1,8 +1,7 @@
-import React from "react";
 import { View, StyleSheet } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
-import { Feather, Octicons } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
 import AppText from "../config/AppText";
 
 function UserRate({ userRating }) {

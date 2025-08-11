@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 function ScrollScreen({children}) {
   return (

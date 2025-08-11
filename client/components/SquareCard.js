@@ -1,5 +1,4 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 import useThemedStyles from "../hooks/useThemedStyles";

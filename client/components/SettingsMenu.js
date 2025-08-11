@@ -1,4 +1,3 @@
-import React from "react";
 import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";

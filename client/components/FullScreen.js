@@ -1,6 +1,4 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AppText from '../../client/config/AppText'
 
 function FullScreen({children}) {
   return (

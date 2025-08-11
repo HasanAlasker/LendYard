@@ -1,5 +1,4 @@
-import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import TopOfPost from "./TopOfPost";
 import ItmeImage from "./ItmeImage";
 import ItemNameAndCat from "../components/ItemNameAndCat";
@@ -13,17 +12,38 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import PostComponent from "../components/PostComponent";
 import useThemedStyles from "../hooks/useThemedStyles";
 
-function Post({profilePic, name, date, image, itemName, itemCat, area, isMine, iBorrowed, iRequested, status, rating,time, condition, title, onPressBtn, onPressThree, isDisabled}) {
+function Post({
+  profilePic,
+  name,
+  date,
+  image,
+  itemName,
+  itemCat,
+  area,
+  isMine,
+  iBorrowed,
+  iRequested,
+  status,
+  rating,
+  time,
+  condition,
+  title,
+  onPressBtn,
+  onPressThree,
+  isDisabled,
+}) {
   const styles = useThemedStyles(getStyles);
 
   return (
     <PostComponent style={styles.post}>
-      <TopOfPost image={profilePic} name={name} date={date} onPressThree={onPressThree}></TopOfPost>
+      <TopOfPost
+        image={profilePic}
+        name={name}
+        date={date}
+        onPressThree={onPressThree}
+      ></TopOfPost>
       <ItmeImage source={image}></ItmeImage>
-      <ItemNameAndCat
-        itemName={itemName}
-        itemCat={itemCat}
-      ></ItemNameAndCat>
+      <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
       <LableContainer>
         <Location area={area}></Location>
         <ItemStatus status={status} time={time}></ItemStatus>
@@ -31,17 +51,26 @@ function Post({profilePic, name, date, image, itemName, itemCat, area, isMine, i
           <ItemRating rating={rating}></ItemRating>
           <ItemCondition condition={condition}></ItemCondition>
         </RowLableCont>
-        <PrimaryBtn title={title} onPress={onPressBtn} isDisabled={isDisabled} status={status} isMine={isMine} iBorrowed={iBorrowed} iRequested={iRequested}></PrimaryBtn>
+        <PrimaryBtn
+          title={title}
+          onPress={onPressBtn}
+          isDisabled={isDisabled}
+          status={status}
+          isMine={isMine}
+          iBorrowed={iBorrowed}
+          iRequested={iRequested}
+        ></PrimaryBtn>
       </LableContainer>
     </PostComponent>
   );
 }
 
-const getStyles = (theme) => StyleSheet.create({
-  post: {
-    marginVertical:20,
-    zIndex:50
-  },
-});
+const getStyles = (theme) =>
+  StyleSheet.create({
+    post: {
+      marginVertical: 20,
+      zIndex: 50,
+    },
+  });
 
 export default Post;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, StyleSheet, SafeAreaViewComponent } from 'react-native';
+import { StyleSheet } from 'react-native';
 import useThemedStyles from '../hooks/useThemedStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

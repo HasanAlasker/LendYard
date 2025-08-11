@@ -112,7 +112,7 @@ const FormikDropBox = ({
         }}
         disabled={disabled}
       />
-      <ErrorMessage error={errors[name]}></ErrorMessage>
+      {shouldShowError && <ErrorMessage error={errors[name]}></ErrorMessage>}
     </>
   );
 };

@@ -23,15 +23,12 @@ function DropBox({
   onSelectItem, 
   selectedValue, 
   disabled,
-  error,
-  errorMessage 
 }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   const [modal, setModal] = useState(false);
 
-  // Find the selected item to display its label
   const selectedItem = items.find(item => item.value === selectedValue);
   const displayText = selectedItem ? selectedItem.label : placeholder;
 
@@ -43,7 +40,7 @@ function DropBox({
 
   const handleSelectItem = (item) => {
     setModal(false);
-    onSelectItem(item.value); // ✅ FIXED: Pass only the value, not the entire object
+    onSelectItem(item.value);
   };
 
   return (
@@ -54,7 +51,6 @@ function DropBox({
           style={[
             styles.container,
             disabled && styles.disabled,
-            error && styles.error
           ]}
           disabled={disabled}
         >
@@ -63,7 +59,7 @@ function DropBox({
               <Feather 
                 name="edit-3" 
                 size={24} 
-                color={disabled ? theme.gray || '#ccc' : theme.purple}
+                color={theme.purple}
               />
             )}
             <AppText style={[
@@ -77,16 +73,9 @@ function DropBox({
           <Feather 
             name="chevron-down" 
             size={26} 
-            color={disabled ? theme.gray || '#ccc' : theme.purple}
+            color={theme.purple}
           />
         </TouchableOpacity>
-
-        {/* Error Message */}
-        {error && errorMessage && (
-          <View style={styles.errorContainer}>
-            <AppText style={styles.errorText}>{errorMessage}</AppText>
-          </View>
-        )}
       </View>
 
       <Modal visible={modal && !disabled} animationType="slide" transparent>
@@ -105,7 +94,7 @@ function DropBox({
             renderItem={({ item }) => (
               <MenuOption
                 text={item.label}
-                onPress={() => handleSelectItem(item)} // ✅ FIXED: Use the handler function
+                onPress={() => handleSelectItem(item)}
               />
             )}
             ItemSeparatorComponent={() => 
@@ -163,6 +152,9 @@ const getStyles = (theme) =>
       marginTop: 5,
       marginBottom: 5,
     },
+    disabled:{
+      opacity:.6
+    }
   });
 
 export default DropBox;

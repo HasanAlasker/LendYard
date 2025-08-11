@@ -79,7 +79,6 @@ const schema = Yup.object().shape({
     }),
 });
 
-// Fixed FormikDropBox component
 const FormikDropBox = ({
   name,
   placeholder,
@@ -98,28 +97,29 @@ const FormikDropBox = ({
   const shouldShowError = hasBeenSubmitted && errors[name];
 
   return (
-    <DropBox
-      placeholder={placeholder}
-      penOn={penOn}
-      items={items}
-      selectedValue={values[name]}
-      onSelectItem={(value) => {
-        setFieldValue(name, value);
-        // Don't set field as touched immediately to avoid showing errors
-        if (setStatus) {
-          setStatus(null);
-        }
-      }}
-      error={shouldShowError}
-      errorMessage={errors[name]}
-      disabled={disabled}
-    />
+    <>
+      <DropBox
+        placeholder={placeholder}
+        penOn={penOn}
+        items={items}
+        selectedValue={values[name]}
+        onSelectItem={(value) => {
+          setFieldValue(name, value);
+          // Don't set field as touched immediately to avoid showing errors
+          if (setStatus) {
+            setStatus(null);
+          }
+        }}
+        disabled={disabled}
+      />
+      <ErrorMessage error={errors[name]}></ErrorMessage>
+    </>
   );
 };
 
 function Post(props) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
-  
+
   const initialValues = {
     category: "",
     item: "",
@@ -170,7 +170,7 @@ function Post(props) {
             isSubmitting,
             isValid,
             status,
-            setStatus
+            setStatus,
           }) => {
             // Dynamic items and areas state
             const [availableItems, setAvailableItems] = useState([]);
@@ -181,15 +181,17 @@ function Post(props) {
               if (values.category) {
                 const categoryItems = getItemsByCategory(values.category);
                 setAvailableItems(categoryItems);
-                
-                const currentItemValid = categoryItems.some(item => item.value === values.item);
+
+                const currentItemValid = categoryItems.some(
+                  (item) => item.value === values.item
+                );
                 if (values.item && !currentItemValid) {
-                  setFieldValue('item', '');
+                  setFieldValue("item", "");
                 }
               } else {
                 setAvailableItems([]);
                 if (values.item) {
-                  setFieldValue('item', '');
+                  setFieldValue("item", "");
                 }
               }
             }, [values.category]);
@@ -199,15 +201,17 @@ function Post(props) {
               if (values.city) {
                 const cityAreas = getAreasByCity(values.city);
                 setAvailableAreas(cityAreas);
-                
-                const currentAreaValid = cityAreas.some(area => area.value === values.area);
+
+                const currentAreaValid = cityAreas.some(
+                  (area) => area.value === values.area
+                );
                 if (values.area && !currentAreaValid) {
-                  setFieldValue('area', '');
+                  setFieldValue("area", "");
                 }
               } else {
                 setAvailableAreas([]);
                 if (values.area) {
-                  setFieldValue('area', '');
+                  setFieldValue("area", "");
                 }
               }
             }, [values.city]);
@@ -218,7 +222,7 @@ function Post(props) {
                 <AddImageBtn
                   image={values.image}
                   onImageChange={(image) => {
-                    setFieldValue('image', image);
+                    setFieldValue("image", image);
                     setStatus(null);
                   }}
                   error={hasBeenSubmitted && errors.image}

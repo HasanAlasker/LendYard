@@ -5,7 +5,7 @@ import { useTheme } from "../config/ThemeContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../config/AppText";
 
-function AddImageBtn(props) {
+function AddImageBtn({image, onImageChange, error, errorMessage}) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 

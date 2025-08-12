@@ -4,18 +4,65 @@ import SafeScreen from "../../components/SafeScreen";
 import TopNav from "../../components/TopNav";
 import Navbar from "../../components/Navbar";
 import ScrollScreen from "../../components/ScrollScreen";
+import Post from "../../components/Post";
+import PostMenu from "../../components/PostMenu";
 
 function Requests(props) {
   const [activeTab, setActiveTab] = useState("Sent");
 
+  const [isPostMenu, setIsPostMenu] = useState(false);
+  const handelMenu = () => {
+    setIsPostMenu(!isPostMenu);
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "Sent":
-        // return <SentContent />;
+        return (
+          <>
+            <Post
+              name={"Yazan Nabas"}
+              date={"12/ 1/ 2026"}
+              image={require("../../assets/Pics/hd.png")}
+              itemName={"Hair Dryer"}
+              itemCat={"Household"}
+              area={"Al shmesani"}
+              status={"available"}
+              rating={"3.7"}
+              condition={"Heavily used"}
+              title={"Request"}
+              time={""}
+              onPressBtn={""}
+              isMine={false}
+              iRequested={true}
+              onPressThree={handelMenu}
+              isDisabled={false}
+            ></Post>
+          </>
+        );
       case "Got":
-        // return <GotContent />;
+        return (
+          <>
+            <Post
+              name={"Yazan Nabas"}
+              date={"12/ 1/ 2026"}
+              image={require("../../assets/Pics/vc.png")}
+              itemName={"Vacuum Cleaner"}
+              itemCat={"Tools"}
+              area={"Airport Street"}
+              status={"requested"}
+              rating={"Unrated"}
+              condition={"Very good"}
+              time={""}
+              onPressBtn={""}
+              isMine={true}
+              onPressThree={handelMenu}
+              isDisabled={false}
+            ></Post>
+          </>
+        );
       default:
-        // return <SentContent />;
+      // return <SentContent />;
     }
   };
 
@@ -23,6 +70,12 @@ function Requests(props) {
     <SafeScreen>
       <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
       <ScrollScreen>{renderContent()}</ScrollScreen>
+      <PostMenu
+        isVisible={isPostMenu}
+        onClose={() => {
+          setIsPostMenu(false);
+        }}
+      ></PostMenu>
       <Navbar></Navbar>
     </SafeScreen>
   );

@@ -1,41 +1,100 @@
-import {useState} from 'react';
-import { View, StyleSheet } from 'react-native';
-import SafeScreen from '../../components/SafeScreen';
-import FullScreen from '../../components/FullScreen';
-import Navbar from '../../components/Navbar';
-import TopNav from '../../components/TopNav';
-import ScrollScreen from '../../components/ScrollScreen';
+import { useState } from "react";
+import { View, StyleSheet } from "react-native";
+import SafeScreen from "../../components/SafeScreen";
+import FullScreen from "../../components/FullScreen";
+import Navbar from "../../components/Navbar";
+import TopNav from "../../components/TopNav";
+import ScrollScreen from "../../components/ScrollScreen";
+import Post from "../../components/Post";
+import PostMenu from "../../components/PostMenu";
 
 function Book(props) {
-  const [activeTab, setActiveTab] = useState('Given');
+  const [activeTab, setActiveTab] = useState("Given");
+
+  const [isPostMenu, setIsPostMenu] = useState(false);
+  const handelMenu = () => {
+    setIsPostMenu(!isPostMenu);
+  };
 
   const renderContent = () => {
-    switch(activeTab) {
-      case 'Given':
-        // return <GivenContent />;
-      case 'Taken':
-        // return <TakenContent />;
+    switch (activeTab) {
+      case "Given":
+        return (
+          <>
+            <Post
+              name={"Adam Ishak"}
+              date={"12/ 1/ 2026"}
+              image={require("../../assets/Pics/image.png")}
+              itemName={"Electric saw"}
+              itemCat={"Tools"}
+              status={"late"}
+              time={"2 Days"}
+              isMine={true}
+              onPressBtn={""}
+              onPressThree={handelMenu}
+              isDisabled={false}
+            ></Post>
+            <Post
+              name={"Yazan Nabas"}
+              date={"12/ 1/ 2026"}
+              image={require("../../assets/Pics/tv.png")}
+              itemName={"Television"}
+              itemCat={"Electronics"}
+              status={"early"}
+              time={"1 Weak"}
+              isMine={true}
+              onPressBtn={""}
+              onPressThree={handelMenu}
+              isDisabled={false}
+            ></Post>
+          </>
+        );
+
+      case "Taken":
+        return (
+          <>
+            <Post
+              name={"Yazan Nabas"}
+              date={"12/ 1/ 2026"}
+              image={require("../../assets/Pics/lm.png")}
+              itemName={"Electric saw"}
+              itemCat={"Tools"}
+              area={"Dabouq"}
+              status={"late"}
+              rating={"4.1"}
+              condition={"Needs repair"}
+              title={"Request"}
+              time={"1 hour"}
+              onPressBtn={""}
+              isMine={false}
+              iBorrowed={true}
+              onPressThree={handelMenu}
+              isDisabled={false}
+            ></Post>
+          </>
+        );
       default:
-        // return <GivenContent />;
+      // return <GivenContent />;
     }
   };
 
   return (
     <SafeScreen>
-      <TopNav 
-        activeTab={activeTab} 
-        onTabChange={setActiveTab} 
-      />
-      <ScrollScreen>
-        {renderContent()}
-      </ScrollScreen>
+      <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
+      <ScrollScreen>{renderContent()}</ScrollScreen>
+      <PostMenu
+        isVisible={isPostMenu}
+        onClose={() => {
+          setIsPostMenu(false);
+        }}
+      ></PostMenu>
       <Navbar />
     </SafeScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{},
-})
+  container: {},
+});
 
 export default Book;

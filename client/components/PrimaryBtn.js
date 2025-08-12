@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "../config/AppText";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
+import { useRoute } from "@react-navigation/native";
 
 function PrimaryBtn({
   title,
@@ -14,11 +15,12 @@ function PrimaryBtn({
 }) {
   const { theme } = useTheme();
   const styles = useThemedStyles(getStyles);
+  const route = useRoute();
 
   const shouldBeDisabled = () => {
     if (isDisabled) return true;
     if (!isMine && status === "disabled") return true;
-    if (isMine && status === "requested") return true; // Can't act while someone requested
+    if (isMine && status === "requested" && route.name === "Profile") return true;
     return false;
   };
 
@@ -28,16 +30,26 @@ function PrimaryBtn({
 
   const renderBtnText = () => {
     if (isMine) {
-      switch(status) {
-        case 'available': return "Disable";
-        case 'taken': return "Got it back";
-        case 'disabled': return "Enable";
-        case 'requested': return "Pending...";
-        default: return "Manage";
+      switch (status) {
+        case "available":
+          return "Disable";
+        case "taken":
+        case "early":
+        case "late":
+          return "Got it back";
+        case "disabled":
+          return "Enable";
+        case "requested":
+          if (route.name === "Profile") return "Pending...";
+          if (route.name === "Requests") return "show_accept_reject";
+          break;
+        default:
+          return "Error";
       }
     }
+    
     if (!isMine) {
-      if (status === 'disabled') return 'Disabled';
+      if (status === "disabled") return "Disabled";
       if (iRequested) return "Cancel Request";
       if (iBorrowed) return "Mark Returned";
       return "Request";
@@ -46,10 +58,16 @@ function PrimaryBtn({
     return title || "Action";
   };
 
+  // we should show accept/reject instead
+  if (renderBtnText() === "show_accept_reject") {
+    return null;
+  }
+
   return (
     <TouchableOpacity
       disabled={shouldBeDisabled()}
       style={[styles.container, { backgroundColor: disableButton() }]}
+      onPress={onPress} // don't forget this!
     >
       <AppText style={styles.text}>{renderBtnText()}</AppText>
     </TouchableOpacity>

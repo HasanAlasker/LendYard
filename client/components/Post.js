@@ -11,6 +11,8 @@ import RowLableCont from "../components/RowLableCont";
 import PrimaryBtn from "../components/PrimaryBtn";
 import PostComponent from "../components/PostComponent";
 import useThemedStyles from "../hooks/useThemedStyles";
+import AcceptRejectBtn from "./AcceptRejectBtn";
+import { useRoute } from "@react-navigation/native";
 
 function Post({
   profilePic,
@@ -33,6 +35,7 @@ function Post({
   isDisabled,
 }) {
   const styles = useThemedStyles(getStyles);
+  const route = useRoute()
 
   return (
     <PostComponent style={styles.post}>
@@ -45,13 +48,13 @@ function Post({
       <ItmeImage source={image}></ItmeImage>
       <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
       <LableContainer>
-        <Location area={area}></Location>
+        {area && <Location area={area}></Location>}
         <ItemStatus status={status} time={time}></ItemStatus>
         <RowLableCont>
-          <ItemRating rating={rating}></ItemRating>
-          <ItemCondition condition={condition}></ItemCondition>
+          {rating && <ItemRating rating={rating}></ItemRating>}
+          {condition && <ItemCondition condition={condition}></ItemCondition>}
         </RowLableCont>
-        <PrimaryBtn
+        {<PrimaryBtn
           title={title}
           onPress={onPressBtn}
           isDisabled={isDisabled}
@@ -59,7 +62,8 @@ function Post({
           isMine={isMine}
           iBorrowed={iBorrowed}
           iRequested={iRequested}
-        ></PrimaryBtn>
+        ></PrimaryBtn>}
+        {route.name === "Requests" && status === "requested" && <AcceptRejectBtn></AcceptRejectBtn>}
       </LableContainer>
     </PostComponent>
   );

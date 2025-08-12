@@ -51,7 +51,7 @@ const getStyles = (theme) =>
       paddingTop: 20,
       borderBottomRightRadius: 30,
       borderBottomLeftRadius: 30,
-      zIndex: 100,
+      zIndex: 88,
       paddingBottom: 25,
       backgroundColor: theme.backgroundColor,
     },

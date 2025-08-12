@@ -11,8 +11,7 @@ const getStyles = (theme) =>
     post: {
       width: "90%",
       paddingHorizontal: 20,
-      paddingTop: 30,
-      paddingBottom: 20,
+      paddingVertical:20,
       borderRadius: 15,
 
       backgroundColor: theme.post,

@@ -1,23 +1,35 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import SafeScreen from '../../components/SafeScreen';
-import AppText from '../../config/AppText';
-import TopNav from '../../components/TopNav';
-import Navbar from '../../components/Navbar';
-import FullScreen from '../../components/FullScreen';
+import { useState } from "react";
+import { StyleSheet } from "react-native";
+import SafeScreen from "../../components/SafeScreen";
+import TopNav from "../../components/TopNav";
+import Navbar from "../../components/Navbar";
+import ScrollScreen from "../../components/ScrollScreen";
 
 function Requests(props) {
+  const [activeTab, setActiveTab] = useState("Sent");
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Sent":
+        // return <SentContent />;
+      case "Got":
+        // return <GotContent />;
+      default:
+        // return <SentContent />;
+    }
+  };
+
   return (
     <SafeScreen>
-        <TopNav></TopNav>
-        <FullScreen></FullScreen>
-        <Navbar></Navbar>
+      <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
+      <ScrollScreen>{renderContent()}</ScrollScreen>
+      <Navbar></Navbar>
     </SafeScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{},
-})
+  container: {},
+});
 
 export default Requests;

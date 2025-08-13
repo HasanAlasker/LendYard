@@ -24,6 +24,7 @@ function Book(props) {
             <Post
               name={"Adam Ishak"}
               date={"12/ 1/ 2026"}
+              profilePic={require('../../assets/Pics/u1.png')}
               image={require("../../assets/Pics/image.png")}
               itemName={"Electric saw"}
               itemCat={"Tools"}
@@ -35,8 +36,9 @@ function Book(props) {
               isDisabled={false}
             ></Post>
             <Post
-              name={"Yazan Nabas"}
+              name={"Momtaz Hamdan"}
               date={"12/ 1/ 2026"}
+              profilePic={require('../../assets/Pics/u2.png')}
               image={require("../../assets/Pics/tv.png")}
               itemName={"Television"}
               itemCat={"Electronics"}
@@ -54,8 +56,9 @@ function Book(props) {
         return (
           <>
             <Post
-              name={"Yazan Nabas"}
+              name={"Fadi Hajarat"}
               date={"12/ 1/ 2026"}
+              profilePic={require('../../assets/Pics/u2.png')}
               image={require("../../assets/Pics/lm.png")}
               itemName={"Electric saw"}
               itemCat={"Tools"}

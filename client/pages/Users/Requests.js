@@ -8,7 +8,7 @@ import Post from "../../components/Post";
 import PostMenu from "../../components/PostMenu";
 
 function Requests(props) {
-  const [activeTab, setActiveTab] = useState("Sent");
+  const [activeTab, setActiveTab] = useState("Got");
 
   const [isPostMenu, setIsPostMenu] = useState(false);
   const handelMenu = () => {
@@ -21,8 +21,9 @@ function Requests(props) {
         return (
           <>
             <Post
-              name={"Yazan Nabas"}
+              name={"Ibrahim Mosa"}
               date={"12/ 1/ 2026"}
+              profilePic={require('../../assets/Pics/u1.png')}
               image={require("../../assets/Pics/hd.png")}
               itemName={"Hair Dryer"}
               itemCat={"Household"}
@@ -44,8 +45,9 @@ function Requests(props) {
         return (
           <>
             <Post
-              name={"Yazan Nabas"}
+              name={"Mohammad Issa"}
               date={"12/ 1/ 2026"}
+              profilePic={require('../../assets/Pics/u2.png')}
               image={require("../../assets/Pics/vc.png")}
               itemName={"Vacuum Cleaner"}
               itemCat={"Tools"}

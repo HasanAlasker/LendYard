@@ -40,6 +40,7 @@ function Have(props) {
         <Post
           name={"Yazan Nabas"}
           date={"12/ 1/ 2026"}
+          profilePic={require('../../assets/Pics/u1.png')}
           image={require('../../assets/Pics/image.png')}
           itemName={"Electric saw"}
           itemCat={'Tools'}

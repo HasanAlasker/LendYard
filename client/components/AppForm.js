@@ -1,6 +1,4 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-
+import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 
 function AppForm({ children, initialValues, validationSchema, handleSubmit }) {

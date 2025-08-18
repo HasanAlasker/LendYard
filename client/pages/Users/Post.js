@@ -4,7 +4,6 @@ import SafeScreen from "../../components/SafeScreen";
 import ScrollScreen from "../../components/ScrollScreen";
 import Navbar from "../../components/Navbar";
 import AddImageBtn from "../../components/AddImageBtn";
-import FormBtn from "../../components/FormBtn";
 import FormikDropBox from "../../components/FormikDropBox";
 
 import { Formik } from "formik";
@@ -19,7 +18,6 @@ import {
   getAreasByCity,
   getItemsByCategory,
 } from "../../constants/DropOptions";
-import AppForm from "../../components/AppForm";
 import SubmitBtn from "../../components/SubmitBtn";
 
 const validationSchema = Yup.object().shape({

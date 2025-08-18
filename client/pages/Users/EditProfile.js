@@ -2,12 +2,10 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import TopChunkProfile from "../../components/TopChunkProfile";
-import FormBtn from "../../components/FormBtn";
 import FormikInput from "../../components/FormikInput";
 import AppForm from "../../components/AppForm";
 import SubmitBtn from "../../components/SubmitBtn";
 
-import { Formik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({

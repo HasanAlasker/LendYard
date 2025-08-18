@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { useFormikContext } from 'formik';
 import InputBox from './InputBox';

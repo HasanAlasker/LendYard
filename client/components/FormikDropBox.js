@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { useFormikContext } from 'formik';
@@ -9,7 +8,7 @@ function FormikDropBox({name, placeholder, items, disabled=false, penOn=false, h
   
   const {values, errors, touched, setFieldTouched, setFieldValue, setStatus} = useFormikContext()
   const shouldShowError = hasBeenSubmitted && errors[name];
-  
+
   return (
     <>
       <DropBox

@@ -2,15 +2,15 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import TopChunkProfile from "../../components/TopChunkProfile";
-import InputBox from "../../components/InputBox";
 import FormBtn from "../../components/FormBtn";
-import ErrorMessage from "../../components/ErrorMessage";
 import FormikInput from "../../components/FormikInput";
+import AppForm from "../../components/AppForm";
+import SubmitBtn from "../../components/SubmitBtn";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const schema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Name must be at least 2 characters long")
     .max(25, "Name must not exceed 25 characters")
@@ -54,7 +54,10 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
 
     setTimeout(() => {
       try {
-        setStatus({ type: "success", message: "Profile updated successfully!" });
+        setStatus({
+          type: "success",
+          message: "Profile updated successfully!",
+        });
       } catch (error) {
         setStatus({ type: "error", message: "Failed to update profile." });
       } finally {
@@ -74,58 +77,42 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
         sep={sep || "Edit Info"}
       />
 
-      <Formik
+      <AppForm
         initialValues={initialValues}
-        validationSchema={schema}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          isValid,
-        }) => (
-          <>
-            <FormikInput
-              name="name"
-              placeholder="Name"
-              hasBeenSubmitted={hasBeenSubmitted}
-              penOn={true}
-            />
+        <FormikInput
+          name="name"
+          placeholder="Name"
+          hasBeenSubmitted={hasBeenSubmitted}
+          penOn={true}
+        />
 
-            <FormikInput
-              name="phone"
-              placeholder="Phone"
-              hasBeenSubmitted={hasBeenSubmitted}
-              penOn={true}
-              keyboardType="phone-pad"
-            />
+        <FormikInput
+          name="phone"
+          placeholder="Phone"
+          hasBeenSubmitted={hasBeenSubmitted}
+          penOn={true}
+          keyboardType="phone-pad"
+        />
 
-            <FormikInput
-              name="email"
-              placeholder="Email"
-              hasBeenSubmitted={hasBeenSubmitted}
-              penOn={true}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
+        <FormikInput
+          name="email"
+          placeholder="Email"
+          hasBeenSubmitted={hasBeenSubmitted}
+          penOn={true}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
 
-            <FormBtn
-              title={isSubmitting ? "Saving..." : "Save"}
-              onPress={() => {
-                setHasBeenSubmitted(true);
-                handleSubmit();
-              }}
-              disabled={!isValid || isSubmitting}
-              loading={isSubmitting}
-            />
-          </>
-        )}
-      </Formik>
+        <SubmitBtn
+          defaultText="Save"
+          submittingText="Saving..."
+          setHasBeenSubmitted={setHasBeenSubmitted}
+        ></SubmitBtn>
+        
+      </AppForm>
     </SafeScreen>
   );
 }

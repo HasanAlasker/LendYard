@@ -3,10 +3,8 @@ import { StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
 import ScrollScreen from "../../components/ScrollScreen";
 import Navbar from "../../components/Navbar";
-import DropBox from "../../components/DropBox";
 import AddImageBtn from "../../components/AddImageBtn";
 import FormBtn from "../../components/FormBtn";
-import ErrorMessage from "../../components/ErrorMessage";
 import FormikDropBox from "../../components/FormikDropBox";
 
 import { Formik } from "formik";
@@ -21,8 +19,10 @@ import {
   getAreasByCity,
   getItemsByCategory,
 } from "../../constants/DropOptions";
+import AppForm from "../../components/AppForm";
+import SubmitBtn from "../../components/SubmitBtn";
 
-const schema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   category: Yup.string()
     .required("Please select a category")
     .oneOf(
@@ -80,7 +80,6 @@ const schema = Yup.object().shape({
     }),
 });
 
-
 function Post(props) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
 
@@ -121,18 +120,10 @@ function Post(props) {
       <ScrollScreen>
         <Formik
           initialValues={initialValues}
-          validationSchema={schema}
+          validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({
-            values,
-            errors,
-            setFieldValue,
-            handleSubmit,
-            isSubmitting,
-            isValid,
-            setStatus,
-          }) => {
+          {({ values, errors, setFieldValue, setStatus }) => {
             // Dynamic items and areas state
             const [availableItems, setAvailableItems] = useState([]);
             const [availableAreas, setAvailableAreas] = useState([]);
@@ -179,7 +170,6 @@ function Post(props) {
 
             return (
               <>
-                {/* Image Upload */}
                 <AddImageBtn
                   image={values.image}
                   onImageChange={(image) => {
@@ -190,7 +180,6 @@ function Post(props) {
                   errorMessage={errors.image}
                 />
 
-                {/* Category Dropdown */}
                 <FormikDropBox
                   name="category"
                   placeholder="Select Category"
@@ -198,7 +187,6 @@ function Post(props) {
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
-                {/* Item Dropdown */}
                 <FormikDropBox
                   name="item"
                   placeholder="Select Item"
@@ -207,7 +195,6 @@ function Post(props) {
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
-                {/* City Dropdown */}
                 <FormikDropBox
                   name="city"
                   placeholder="Select City"
@@ -215,7 +202,6 @@ function Post(props) {
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
-                {/* Area Dropdown */}
                 <FormikDropBox
                   name="area"
                   placeholder="Select Area"
@@ -224,7 +210,6 @@ function Post(props) {
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
-                {/* Condition Dropdown */}
                 <FormikDropBox
                   name="condition"
                   placeholder="Select Condition"
@@ -232,16 +217,9 @@ function Post(props) {
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
-                {/* Submit Button */}
-                <FormBtn
-                  title={isSubmitting ? "Posting..." : "Post"}
-                  onPress={() => {
-                    setHasBeenSubmitted(true);
-                    handleSubmit();
-                  }}
-                  disabled={!isValid || isSubmitting}
-                  loading={isSubmitting}
-                />
+                <SubmitBtn
+                  setHasBeenSubmitted={setHasBeenSubmitted}
+                ></SubmitBtn>
               </>
             );
           }}

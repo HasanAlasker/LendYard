@@ -7,6 +7,7 @@ import DropBox from "../../components/DropBox";
 import AddImageBtn from "../../components/AddImageBtn";
 import FormBtn from "../../components/FormBtn";
 import ErrorMessage from "../../components/ErrorMessage";
+import FormikDropBox from "../../components/FormikDropBox";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -79,43 +80,6 @@ const schema = Yup.object().shape({
     }),
 });
 
-const FormikDropBox = ({
-  name,
-  placeholder,
-  items,
-  values,
-  errors,
-  touched,
-  setFieldValue,
-  setFieldTouched,
-  setStatus,
-  disabled = false,
-  penOn = false,
-  hasBeenSubmitted = false,
-}) => {
-  // Only show error if form has been submitted OR field was touched and then left
-  const shouldShowError = hasBeenSubmitted && errors[name];
-
-  return (
-    <>
-      <DropBox
-        placeholder={placeholder}
-        penOn={penOn}
-        items={items}
-        selectedValue={values[name]}
-        onSelectItem={(value) => {
-          setFieldValue(name, value);
-          // Don't set field as touched immediately to avoid showing errors
-          if (setStatus) {
-            setStatus(null);
-          }
-        }}
-        disabled={disabled}
-      />
-      {shouldShowError && <ErrorMessage error={errors[name]}></ErrorMessage>}
-    </>
-  );
-};
 
 function Post(props) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
@@ -163,13 +127,10 @@ function Post(props) {
           {({
             values,
             errors,
-            touched,
             setFieldValue,
-            setFieldTouched,
             handleSubmit,
             isSubmitting,
             isValid,
-            status,
             setStatus,
           }) => {
             // Dynamic items and areas state
@@ -234,12 +195,6 @@ function Post(props) {
                   name="category"
                   placeholder="Select Category"
                   items={categories}
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  setStatus={setStatus}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
@@ -248,12 +203,6 @@ function Post(props) {
                   name="item"
                   placeholder="Select Item"
                   items={availableItems}
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  setStatus={setStatus}
                   disabled={!values.category || availableItems.length === 0}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
@@ -263,12 +212,6 @@ function Post(props) {
                   name="city"
                   placeholder="Select City"
                   items={cities}
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  setStatus={setStatus}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 
@@ -277,12 +220,6 @@ function Post(props) {
                   name="area"
                   placeholder="Select Area"
                   items={availableAreas}
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  setStatus={setStatus}
                   disabled={!values.city || availableAreas.length === 0}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
@@ -292,12 +229,6 @@ function Post(props) {
                   name="condition"
                   placeholder="Select Condition"
                   items={condition}
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  setStatus={setStatus}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 

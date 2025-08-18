@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
     .trim()
     .required("Name is required"),
 
-  phone: Yup.string().test(
+  phone: Yup.string().required().test(
     "phone-validation",
     "Please enter a valid phone number",
     function (value) {

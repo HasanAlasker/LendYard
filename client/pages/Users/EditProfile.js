@@ -5,6 +5,7 @@ import TopChunkProfile from "../../components/TopChunkProfile";
 import InputBox from "../../components/InputBox";
 import FormBtn from "../../components/FormBtn";
 import ErrorMessage from "../../components/ErrorMessage";
+import FormikInput from "../../components/FormikInput";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -37,36 +38,6 @@ const schema = Yup.object().shape({
     .required("Email is required")
     .trim(),
 });
-
-const FormikInput = ({
-  name,
-  placeholder,
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  hasBeenSubmitted,
-  penOn = false,
-  keyboardType,
-  autoCapitalize,
-}) => {
-  const shouldShowError = hasBeenSubmitted && errors[name];
-  return (
-    <>
-      <InputBox
-        placeholder={placeholder}
-        penOn={penOn}
-        value={values[name]}
-        onChangeText={handleChange(name)}
-        onBlur={handleBlur(name)}
-        keyboardType={keyboardType}
-        autoCapitalize={autoCapitalize}
-      />
-      {shouldShowError && <ErrorMessage error={errors[name]} />}
-    </>
-  );
-};
 
 function EditProfile({ userName, image, number, email, rating, sep }) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
@@ -122,11 +93,6 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
             <FormikInput
               name="name"
               placeholder="Name"
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
               hasBeenSubmitted={hasBeenSubmitted}
               penOn={true}
             />
@@ -134,11 +100,6 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
             <FormikInput
               name="phone"
               placeholder="Phone"
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
               hasBeenSubmitted={hasBeenSubmitted}
               penOn={true}
               keyboardType="phone-pad"
@@ -147,11 +108,6 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
             <FormikInput
               name="email"
               placeholder="Email"
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
               hasBeenSubmitted={hasBeenSubmitted}
               penOn={true}
               keyboardType="email-address"

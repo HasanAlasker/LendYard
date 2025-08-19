@@ -4,7 +4,7 @@ import AppText from "../config/AppText";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 
-function RequestBtn({ title, isActive, onPress, isGreen, isRed }) {
+function RequestBtn({ title, isActive, onPress, isGreen, isRed, style }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
@@ -26,7 +26,7 @@ function RequestBtn({ title, isActive, onPress, isGreen, isRed }) {
   }
 
   return (
-    <TouchableOpacity style={[styles.container, {backgroundColor: buttonColor(), borderColor: borderColor()}]}>
+    <TouchableOpacity onPress={onPress} style={[styles.container, {backgroundColor: buttonColor(), borderColor: borderColor()}, style]}>
       <AppText style={[styles.text, {color: textColor()}]}>{title}</AppText>
     </TouchableOpacity>
   );

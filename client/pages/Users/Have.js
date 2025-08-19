@@ -57,7 +57,6 @@ function Have(props) {
         ></Post>
       </ScrollScreen>
       <PostMenu isVisible={isPostMenu} onClose={()=>{setIsPostMenu(false)}}></PostMenu>
-      <RequestModal></RequestModal>
       <Navbar></Navbar>
     </SafeScreen>
   );

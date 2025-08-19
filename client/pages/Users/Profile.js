@@ -95,7 +95,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           onPressThree={handelPostMenu}
         ></Post>
       </ScrollScreen>
-      <PostMenu isVisible={isPostMenu} onClose={()=>{setIsPostMenu(false)}} isMine={myProfile}></PostMenu>
       <Navbar></Navbar>
     </SafeScreen>
   );

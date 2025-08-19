@@ -1,41 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Modal } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import AppText from "../config/AppText";
 import PlusMinusBtn from "./PlusMinusBtn";
 import RequestBtn from "./RequestBtn";
+import PrimaryBtn from "./PrimaryBtn";
 
-function RequestModal({ isVisibile }) {
+function RequestModal({ isVisibile, onClose }) {
   const styles = useThemedStyles(getStyles);
 
+  const [duration, setDuration] = useState(0)
+  const [unit, setUnit] = useState('')
+
+  const increase = () => setDuration(prev => Math.min(prev + 1, 99))
+  const decrease = () => setDuration(prev => Math.max(prev - 1, 1))
+
   return (
-    <Modal transparent={true} visible={true}>
+    <Modal transparent={true} visible={isVisibile}>
       <View style={styles.container}>
         <AppText style={styles.text}>Duration</AppText>
         <View style={styles.addMinus}>
-            <PlusMinusBtn icon={'minus'}></PlusMinusBtn>
-            <AppText style={styles.number}>3</AppText>
-            <PlusMinusBtn icon={'plus'}></PlusMinusBtn>
+            <PlusMinusBtn icon={'minus'} onPress={decrease}></PlusMinusBtn>
+            <AppText style={styles.number}>{duration}</AppText>
+            <PlusMinusBtn icon={'plus'} onPress={increase}></PlusMinusBtn>
         </View>
         <AppText style={styles.text}>Time unit</AppText>
         <View style={styles.buttons}>
             <View style={styles.buttons}>
-                <RequestBtn title={'Hours'} isActive={true}></RequestBtn>
+                <RequestBtn title={'Hours'} isActive={''}></RequestBtn>
                 <RequestBtn title={'Days'}></RequestBtn>
                 <RequestBtn title={'Weeks'}></RequestBtn>
                 <RequestBtn title={'Months'}></RequestBtn>
             </View>
         </View>
-        <View style={styles.display}>
+        {duration > 0 && <View style={styles.display}>
             <AppText style={styles.faded}>Requesting for:</AppText>
-            <AppText style={styles.text}>3 hours</AppText>
-        </View>
-        <View style={styles.buttons}>
+            <AppText style={styles.text}>{duration}</AppText>
+        </View>}
+        {duration > 0 && <View style={styles.buttons}>
             <View style={styles.buttons}>
                 <RequestBtn title={'Request'} isGreen={true}></RequestBtn>
-                <RequestBtn title={'Cancel'} isRed={true}></RequestBtn>
+                <RequestBtn title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>
             </View>
-        </View>
+        </View>}
+        {duration === 0 && <RequestBtn style={styles.fullBtn} title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>}
       </View>
       <View style={styles.overlay}></View>
     </Modal>
@@ -111,6 +119,10 @@ const getStyles = (theme) =>
     ,faded:{
         color:theme.darker_gray,
         fontSize:20,
+    },
+    fullBtn:{
+        width:'100%',
+        marginTop:40
     }
   });
 

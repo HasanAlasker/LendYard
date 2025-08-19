@@ -3,6 +3,10 @@ import AppText from "../config/AppText";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import { useRoute } from "@react-navigation/native";
+import RequestModal from "./RequestModal";
+import { useSafeAreaFrame } from "react-native-safe-area-context";
+import { useState } from "react";
+import PostMenu from "./PostMenu";
 
 function PrimaryBtn({
   title,
@@ -20,7 +24,8 @@ function PrimaryBtn({
   const shouldBeDisabled = () => {
     if (isDisabled) return true;
     if (!isMine && status === "disabled") return true;
-    if (isMine && status === "requested" && route.name === "Profile") return true;
+    if (isMine && status === "requested" && route.name === "Profile")
+      return true;
     return false;
   };
 
@@ -47,7 +52,7 @@ function PrimaryBtn({
           return "Error";
       }
     }
-    
+
     if (!isMine) {
       if (status === "disabled") return "Disabled";
       if (iRequested) return "Cancel Request";
@@ -63,14 +68,24 @@ function PrimaryBtn({
     return null;
   }
 
+  const [visibleReq, setVisibileReq] = useState(false)
+  const handlePress = () => {
+    setVisibileReq(true)
+  }
+
+  const [visibleMenu, setVisibileMenu] = useState(false)
+
   return (
-    <TouchableOpacity
-      disabled={shouldBeDisabled()}
-      style={[styles.container, { backgroundColor: disableButton() }]}
-      onPress={onPress} // don't forget this!
-    >
-      <AppText style={styles.text}>{renderBtnText()}</AppText>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity
+        disabled={shouldBeDisabled()}
+        style={[styles.container, { backgroundColor: disableButton() }]}
+        onPress={handlePress} // don't forget this!
+      >
+        <AppText style={styles.text}>{renderBtnText()}</AppText>
+      </TouchableOpacity>
+      <RequestModal isVisibile={visibleReq} onClose={()=> {setVisibileReq(false)}}></RequestModal>
+    </>
   );
 }
 

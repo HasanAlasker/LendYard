@@ -11,10 +11,7 @@ import PostMenu from "../../components/PostMenu";
 function Profile({userName, isNotification, myProfile=true, userPic, userRate, sep}) {
   const [isMenu, setIsMenu]= useState(false)
 
-  const [isPostMenu, setIsPostMenu]= useState(false)
-  const handelPostMenu = () => {
-    setIsPostMenu(!isPostMenu)
-  }
+ 
 
 
   return (
@@ -44,7 +41,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
-          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -60,7 +56,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
-          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -76,7 +71,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
-          onPressThree={handelPostMenu}
         ></Post>
         <Post
           area={"Al Jandaweel"}
@@ -92,7 +86,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           rating={"4.3"}
           iBorrowed={false}
           iRequested={false}
-          onPressThree={handelPostMenu}
         ></Post>
       </ScrollScreen>
       <Navbar></Navbar>

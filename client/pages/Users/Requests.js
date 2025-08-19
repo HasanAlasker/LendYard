@@ -5,15 +5,9 @@ import TopNav from "../../components/TopNav";
 import Navbar from "../../components/Navbar";
 import ScrollScreen from "../../components/ScrollScreen";
 import Post from "../../components/Post";
-import PostMenu from "../../components/PostMenu";
 
 function Requests(props) {
   const [activeTab, setActiveTab] = useState("Got");
-
-  const [isPostMenu, setIsPostMenu] = useState(false);
-  const handelMenu = () => {
-    setIsPostMenu(!isPostMenu);
-  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -36,7 +30,6 @@ function Requests(props) {
               onPressBtn={""}
               isMine={false}
               iRequested={true}
-              onPressThree={handelMenu}
               isDisabled={false}
             ></Post>
           </>
@@ -58,7 +51,6 @@ function Requests(props) {
               time={""}
               onPressBtn={""}
               isMine={true}
-              onPressThree={handelMenu}
               isDisabled={false}
             ></Post>
           </>
@@ -72,12 +64,6 @@ function Requests(props) {
     <SafeScreen>
       <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
       <ScrollScreen>{renderContent()}</ScrollScreen>
-      <PostMenu
-        isVisible={isPostMenu}
-        onClose={() => {
-          setIsPostMenu(false);
-        }}
-      ></PostMenu>
       <Navbar></Navbar>
     </SafeScreen>
   );

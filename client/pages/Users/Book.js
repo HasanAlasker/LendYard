@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeScreen from "../../components/SafeScreen";
-import FullScreen from "../../components/FullScreen";
 import Navbar from "../../components/Navbar";
 import TopNav from "../../components/TopNav";
 import ScrollScreen from "../../components/ScrollScreen";
 import Post from "../../components/Post";
-import PostMenu from "../../components/PostMenu";
+
 
 function Book(props) {
   const [activeTab, setActiveTab] = useState("Given");
-
-  const [isPostMenu, setIsPostMenu] = useState(false);
-  const handelMenu = () => {
-    setIsPostMenu(!isPostMenu);
-  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -32,7 +26,6 @@ function Book(props) {
               time={"2 Days"}
               isMine={true}
               onPressBtn={""}
-              onPressThree={handelMenu}
               isDisabled={false}
             ></Post>
             <Post
@@ -46,7 +39,6 @@ function Book(props) {
               time={"1 Weak"}
               isMine={true}
               onPressBtn={""}
-              onPressThree={handelMenu}
               isDisabled={false}
             ></Post>
           </>
@@ -71,7 +63,6 @@ function Book(props) {
               onPressBtn={""}
               isMine={false}
               iBorrowed={true}
-              onPressThree={handelMenu}
               isDisabled={false}
             ></Post>
           </>
@@ -85,12 +76,6 @@ function Book(props) {
     <SafeScreen>
       <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
       <ScrollScreen>{renderContent()}</ScrollScreen>
-      <PostMenu
-        isVisible={isPostMenu}
-        onClose={() => {
-          setIsPostMenu(false);
-        }}
-      ></PostMenu>
       <Navbar />
     </SafeScreen>
   );

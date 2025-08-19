@@ -3,8 +3,9 @@ import AppText from "../config/AppText";
 import { Feather } from "@expo/vector-icons";
 import useThemedStyles from "../hooks/useThemedStyles";
 
-function TopOfPost({ name, date, image ,onPressThree, onPressProfile}) {
+function TopOfPost({ name, date, image, onPressThree, onPressProfile }) {
   const styles = useThemedStyles(getStyles);
+
   return (
     <View style={styles.topPart}>
       <View style={styles.picAndNameAndDate}>
@@ -37,8 +38,8 @@ const getStyles = (theme) =>
       width: 40,
       aspectRatio: 1,
       backgroundColor: theme.sec_text,
-      borderRadius:20,
-      overflow:"hidden"
+      borderRadius: 20,
+      overflow: "hidden",
     },
     name: {
       fontSize: 17,
@@ -48,22 +49,22 @@ const getStyles = (theme) =>
     date: {
       fontSize: 14,
       color: theme.sec_text,
-      fontWeight:'600'
+      fontWeight: "600",
     },
     topPart: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
     },
-    more:{
-        left:10,
-        color:theme.main_text
+    more: {
+      left: 10,
+      color: theme.main_text,
     },
-    pic:{
-      width: '100%',
-      height:40,
-      resizeMode:'cover'
-    }
+    pic: {
+      width: "100%",
+      height: 40,
+      resizeMode: "cover",
+    },
   });
 
 export default TopOfPost;

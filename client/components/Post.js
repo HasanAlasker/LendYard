@@ -13,6 +13,8 @@ import PostComponent from "../components/PostComponent";
 import useThemedStyles from "../hooks/useThemedStyles";
 import AcceptRejectBtn from "./AcceptRejectBtn";
 import { useRoute } from "@react-navigation/native";
+import PostMenu from "./PostMenu";
+import { useState } from "react";
 
 function Post({
   profilePic,
@@ -35,37 +37,54 @@ function Post({
   isDisabled,
 }) {
   const styles = useThemedStyles(getStyles);
-  const route = useRoute()
+  const route = useRoute();
+
+  const [isPostMenu, setIsPostMenu] = useState(false);
+  const handelMenu = () => {
+    setIsPostMenu(!isPostMenu);
+  };
 
   return (
-    <PostComponent style={styles.post}>
-      <TopOfPost
-        image={profilePic}
-        name={name}
-        date={date}
-        onPressThree={onPressThree}
-      ></TopOfPost>
-      <ItmeImage source={image}></ItmeImage>
-      <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
-      <LableContainer>
-        {area && <Location area={area}></Location>}
-        <ItemStatus status={status} time={time}></ItemStatus>
-        <RowLableCont>
-          {rating && <ItemRating rating={rating}></ItemRating>}
-          {condition && <ItemCondition condition={condition}></ItemCondition>}
-        </RowLableCont>
-        {<PrimaryBtn
-          title={title}
-          onPress={onPressBtn}
-          isDisabled={isDisabled}
-          status={status}
-          isMine={isMine}
-          iBorrowed={iBorrowed}
-          iRequested={iRequested}
-        ></PrimaryBtn>}
-        {route.name === "Requests" && status === "requested" && <AcceptRejectBtn></AcceptRejectBtn>}
-      </LableContainer>
-    </PostComponent>
+    <>
+      <PostComponent style={styles.post}>
+        <TopOfPost
+          image={profilePic}
+          name={name}
+          date={date}
+          onPressThree={handelMenu}
+        ></TopOfPost>
+        <ItmeImage source={image}></ItmeImage>
+        <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
+        <LableContainer>
+          {area && <Location area={area}></Location>}
+          <ItemStatus status={status} time={time}></ItemStatus>
+          <RowLableCont>
+            {rating && <ItemRating rating={rating}></ItemRating>}
+            {condition && <ItemCondition condition={condition}></ItemCondition>}
+          </RowLableCont>
+          {
+            <PrimaryBtn
+              title={title}
+              onPress={onPressBtn}
+              isDisabled={isDisabled}
+              status={status}
+              isMine={isMine}
+              iBorrowed={iBorrowed}
+              iRequested={iRequested}
+            ></PrimaryBtn>
+          }
+          {route.name === "Requests" && status === "requested" && (
+            <AcceptRejectBtn></AcceptRejectBtn>
+          )}
+        </LableContainer>
+      </PostComponent>
+
+      <PostMenu
+        isMine={isMine}
+        isVisible={isPostMenu}
+        onClose={() => setIsPostMenu(false)}
+      ></PostMenu>
+    </>
   );
 }
 

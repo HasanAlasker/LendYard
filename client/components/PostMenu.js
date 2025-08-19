@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { View, StyleSheet, TouchableWithoutFeedback, Modal } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import Constants from "expo-constants";
@@ -15,7 +15,7 @@ function PostMenu({ isVisible, onClose, isMine }) {
 
   if (!isVisible) return null;
   return (
-    <>
+    <Modal transparent>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay} />
       </TouchableWithoutFeedback>
@@ -30,7 +30,7 @@ function PostMenu({ isVisible, onClose, isMine }) {
           {isMine ? <MenuOption text={"Delete post"} icon={"delete"} color={"red"} />: <MenuOption text={"Report post"} icon={"bullhorn-variant"} color={"red"} />}
         </BackContainer>
       </View>
-    </>
+    </Modal>
   );
 }
 
@@ -44,7 +44,7 @@ const getStyles = (theme) =>
       paddingBottom: 100,
       borderTopRightRadius: 22,
       borderTopLeftRadius: 22,
-      paddingBottom: Constants.statusBarHeight+73,
+      paddingBottom: 20,
       bottom: 0,
       paddingTop:5
     },

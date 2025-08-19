@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Modal } from "react-native";
+import { View, StyleSheet, Modal, TouchableWithoutFeedback } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import AppText from "../config/AppText";
 import PlusMinusBtn from "./PlusMinusBtn";
@@ -54,7 +54,9 @@ function RequestModal({ isVisibile, onClose }) {
         </View>}
         {duration === 0 && <RequestBtn style={styles.fullBtn} title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>}
       </View>
-      <View style={styles.overlay}></View>
+      <TouchableWithoutFeedback onPress={onClose}>
+        <View style={styles.overlay}></View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 }

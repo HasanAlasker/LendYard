@@ -4,9 +4,7 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import { useRoute } from "@react-navigation/native";
 import RequestModal from "./RequestModal";
-import { useSafeAreaFrame } from "react-native-safe-area-context";
 import { useState } from "react";
-import PostMenu from "./PostMenu";
 
 function PrimaryBtn({
   title,
@@ -73,7 +71,6 @@ function PrimaryBtn({
     setVisibileReq(true)
   }
 
-  const [visibleMenu, setVisibileMenu] = useState(false)
 
   return (
     <>

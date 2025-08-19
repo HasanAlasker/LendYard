@@ -10,10 +10,19 @@ function RequestModal({ isVisibile, onClose }) {
   const styles = useThemedStyles(getStyles);
 
   const [duration, setDuration] = useState(0)
-  const [unit, setUnit] = useState('')
+  const [baseUnit, setBaseUnit] = useState('') // Store base unit
+  const [active, setActive] = useState(null)
 
   const increase = () => setDuration(prev => Math.min(prev + 1, 99))
   const decrease = () => setDuration(prev => Math.max(prev - 1, 1))
+
+  const handleUnit = (units) => {
+    setBaseUnit(units)
+    setActive(units)
+  }
+
+  // Compute the display unit on each render
+  const displayUnit = baseUnit ? (duration === 1 ? baseUnit.slice(0, -1) : baseUnit) : ''
 
   return (
     <Modal transparent={true} visible={isVisibile}>
@@ -27,15 +36,15 @@ function RequestModal({ isVisibile, onClose }) {
         <AppText style={styles.text}>Time unit</AppText>
         <View style={styles.buttons}>
             <View style={styles.buttons}>
-                <RequestBtn title={'Hours'} isActive={''}></RequestBtn>
-                <RequestBtn title={'Days'}></RequestBtn>
-                <RequestBtn title={'Weeks'}></RequestBtn>
-                <RequestBtn title={'Months'}></RequestBtn>
+                <RequestBtn title={'Hours'} isActive={active === 'hours'} onPress={()=> handleUnit('hours')} ></RequestBtn>
+                <RequestBtn title={'Days'} isActive={active === 'days'} onPress={()=> handleUnit('days')} ></RequestBtn>
+                <RequestBtn title={'Weeks'} isActive={active === 'weeks'} onPress={()=> handleUnit('weeks')} ></RequestBtn>
+                <RequestBtn title={'Months'} isActive={active === 'months'} onPress={()=> handleUnit('months')} ></RequestBtn>
             </View>
         </View>
         {duration > 0 && <View style={styles.display}>
             <AppText style={styles.faded}>Requesting for:</AppText>
-            <AppText style={styles.text}>{duration}</AppText>
+            <AppText style={styles.text}>{duration} {displayUnit}</AppText>
         </View>}
         {duration > 0 && <View style={styles.buttons}>
             <View style={styles.buttons}>

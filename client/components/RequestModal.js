@@ -1,0 +1,116 @@
+import React from "react";
+import { View, StyleSheet, Modal } from "react-native";
+import useThemedStyles from "../hooks/useThemedStyles";
+import AppText from "../config/AppText";
+import PlusMinusBtn from "./PlusMinusBtn";
+import RequestBtn from "./RequestBtn";
+
+function RequestModal({ isVisibile }) {
+  const styles = useThemedStyles(getStyles);
+
+  return (
+    <Modal transparent={true} visible={true}>
+      <View style={styles.container}>
+        <AppText style={styles.text}>Duration</AppText>
+        <View style={styles.addMinus}>
+            <PlusMinusBtn icon={'minus'}></PlusMinusBtn>
+            <AppText style={styles.number}>3</AppText>
+            <PlusMinusBtn icon={'plus'}></PlusMinusBtn>
+        </View>
+        <AppText style={styles.text}>Time unit</AppText>
+        <View style={styles.buttons}>
+            <View style={styles.buttons}>
+                <RequestBtn title={'Hours'} isActive={true}></RequestBtn>
+                <RequestBtn title={'Days'}></RequestBtn>
+                <RequestBtn title={'Weeks'}></RequestBtn>
+                <RequestBtn title={'Months'}></RequestBtn>
+            </View>
+        </View>
+        <View style={styles.display}>
+            <AppText style={styles.faded}>Requesting for:</AppText>
+            <AppText style={styles.text}>3 hours</AppText>
+        </View>
+        <View style={styles.buttons}>
+            <View style={styles.buttons}>
+                <RequestBtn title={'Request'} isGreen={true}></RequestBtn>
+                <RequestBtn title={'Cancel'} isRed={true}></RequestBtn>
+            </View>
+        </View>
+      </View>
+      <View style={styles.overlay}></View>
+    </Modal>
+  );
+}
+
+const getStyles = (theme) =>
+  StyleSheet.create({
+    container: {
+      width: "90%",
+      margin: "auto",
+      maxHeight: "80%",
+      backgroundColor: theme.post,
+      zIndex: 250,
+      borderRadius: 15,
+      paddingHorizontal:20,
+      paddingVertical:20,
+
+      shadowColor: "black",
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.27,
+      shadowRadius: 4.65,
+
+      elevation: 6,
+    },
+    overlay: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      backgroundColor: theme.background,
+      opacity: 0.5,
+    },
+    text:{
+        fontSize:20,
+    },
+    addMinus:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        gap:25,
+        marginBottom:10
+    },
+    number:{
+        fontSize:85,
+        color:theme.purple,
+        fontWeight:'bold',
+
+    },
+    buttons:{
+        flexDirection:'row'
+        ,flexWrap:'wrap',
+        width:'100%',
+        rowGap:20,
+        justifyContent:'space-between',
+        marginTop:10
+    },
+    display:{
+        width:'100%',
+        backgroundColor:theme.background,
+        flexDirection:'row',
+        alignItems:'center',
+        paddingHorizontal:20,
+        paddingVertical:25,
+        borderRadius:10,
+        gap:10,
+        marginTop:40,
+        marginBottom:20
+    }
+    ,faded:{
+        color:theme.darker_gray,
+        fontSize:20,
+    }
+  });
+
+export default RequestModal;

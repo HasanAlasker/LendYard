@@ -8,6 +8,7 @@ import Post from "../../components/Post";
 import ScrollScreen from "../../components/ScrollScreen";
 import PostMenu from "../../components/PostMenu";
 import { useState } from "react";
+import RequestModal from "../../components/RequestModal";
 
 function Have(props) {
   const styles = useThemedStyles(getStyles);
@@ -56,6 +57,7 @@ function Have(props) {
         ></Post>
       </ScrollScreen>
       <PostMenu isVisible={isPostMenu} onClose={()=>{setIsPostMenu(false)}}></PostMenu>
+      <RequestModal></RequestModal>
       <Navbar></Navbar>
     </SafeScreen>
   );

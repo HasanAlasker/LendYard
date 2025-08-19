@@ -52,7 +52,7 @@ const getStyles = (theme) =>
       zIndex: 250,
       borderRadius: 15,
       paddingHorizontal:20,
-      paddingVertical:20,
+      paddingVertical:25,
 
       shadowColor: "black",
       shadowOffset: {
@@ -73,6 +73,7 @@ const getStyles = (theme) =>
     },
     text:{
         fontSize:20,
+        color:theme.main_text
     },
     addMinus:{
         flexDirection:'row',
@@ -97,15 +98,15 @@ const getStyles = (theme) =>
     },
     display:{
         width:'100%',
-        backgroundColor:theme.background,
+        backgroundColor:theme.light_gray,
         flexDirection:'row',
         alignItems:'center',
         paddingHorizontal:20,
-        paddingVertical:25,
+        paddingVertical:20,
         borderRadius:10,
         gap:10,
-        marginTop:40,
-        marginBottom:20
+        marginTop:30,
+        marginBottom:30
     }
     ,faded:{
         color:theme.darker_gray,

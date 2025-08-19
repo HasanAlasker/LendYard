@@ -10,7 +10,7 @@ function PlusMinusBtn({ icon, onPress }) {
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Feather name={icon} size={27} color={theme.purple}></Feather>
+      <Feather name={icon} size={27} color={theme.main_text}></Feather>
     </TouchableOpacity>
   );
 }
@@ -18,14 +18,14 @@ function PlusMinusBtn({ icon, onPress }) {
 const getStyles = (theme) =>
   StyleSheet.create({
     container: {
-      backgroundColor: theme.post,
-      padding: 8,
-      width: 48,
-      height: 48,
+      backgroundColor: theme.light_gray,
+      padding: 0,
+      width: 40,
+      height: 40,
       borderRadius: "50%",
       justifyContent: "center",
       alignItems: "center",
-      borderColor: theme.purple,
+      borderColor: theme.light_gray,
       borderWidth: 2,
     },
   });

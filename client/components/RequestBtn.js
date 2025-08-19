@@ -39,7 +39,7 @@ const getStyles = (theme) =>
       backgroundColor: theme.purple,
       justifyContent: "center",
       alignItems: "center",
-      padding: 8,
+      padding: 5,
       borderRadius: 10,
       borderWidth:2,
       borderColor:theme.purple

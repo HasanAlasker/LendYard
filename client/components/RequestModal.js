@@ -42,7 +42,7 @@ function RequestModal({ isVisibile, onClose }) {
                 <RequestBtn title={'Months'} isActive={active === 'months'} onPress={()=> handleUnit('months')} ></RequestBtn>
             </View>
         </View>
-        {duration > 0 && <View style={styles.display}>
+        {duration > 0 && displayUnit != "" && <View style={styles.display}>
             <AppText style={styles.faded}>Requesting for:</AppText>
             <AppText style={styles.text}>{duration} {displayUnit}</AppText>
         </View>}

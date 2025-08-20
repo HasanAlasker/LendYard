@@ -46,13 +46,13 @@ function RequestModal({ isVisibile, onClose }) {
             <AppText style={styles.faded}>Requesting for:</AppText>
             <AppText style={styles.text}>{duration} {displayUnit}</AppText>
         </View>}
-        {duration > 0 && <View style={styles.buttons}>
+        {duration > 0 && displayUnit != "" && <View style={styles.buttons}>
             <View style={styles.buttons}>
                 <RequestBtn title={'Request'} isGreen={true}></RequestBtn>
                 <RequestBtn title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>
             </View>
         </View>}
-        {duration === 0 && <RequestBtn style={styles.fullBtn} title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>}
+        {(duration === 0 || displayUnit === '') && <RequestBtn style={styles.fullBtn} title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>}
       </View>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}></View>

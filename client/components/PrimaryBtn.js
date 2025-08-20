@@ -66,9 +66,10 @@ function PrimaryBtn({
     return null;
   }
 
-  const [visibleReq, setVisibileReq] = useState(false)
+  const [visibleRequest, setVisibileRequest] = useState(false)
   const handlePress = () => {
-    setVisibileReq(true)
+    if(renderBtnText() === 'Request') setVisibileRequest(true)
+    
   }
 
 
@@ -81,7 +82,7 @@ function PrimaryBtn({
       >
         <AppText style={styles.text}>{renderBtnText()}</AppText>
       </TouchableOpacity>
-      <RequestModal isVisibile={visibleReq} onClose={()=> {setVisibileReq(false)}}></RequestModal>
+      <RequestModal isVisibile={visibleRequest} onClose={()=> {setVisibileRequest(false)}}></RequestModal>
     </>
   );
 }

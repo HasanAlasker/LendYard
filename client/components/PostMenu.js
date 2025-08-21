@@ -23,11 +23,10 @@ function PostMenu({ isVisible, onClose, isMine }) {
     setReportMenu(!reportMenu);
   };
 
-  const handleReport = (reason) => {
-    console.log(`Reported for: ${reason}`);
-    onClose();
-    setReportMenu(false); // Close the menu after reporting
-  };
+  // const handleReport = (reason) => {
+  //   console.log(`Reported for: ${reason}`);
+  //   setReportMenu(false); // Close the menu after reporting
+  // };
 
   if (!isVisible) return null;
   return (
@@ -67,55 +66,55 @@ function PostMenu({ isVisible, onClose, isMine }) {
               <MenuOption 
                 text={"Item doesn't exist/fake listing"} 
                 icon={"alert-circle-outline"}
-                onPress={() => handleReport("Item doesn't exist/fake listing")}
+                // onPress={() => handleReport("Item doesn't exist/fake listing")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Misleading item description"} 
                 icon={"information-off-outline"}
-                onPress={() => handleReport("Misleading item description")}
+                // onPress={() => handleReport("Misleading item description")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Unsafe or damaged item"} 
                 icon={"shield-alert-outline"}
-                onPress={() => handleReport("Unsafe or damaged item")}
+                // onPress={() => handleReport("Unsafe or damaged item")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Spam or duplicate listing"} 
                 icon={"content-copy"}
-                onPress={() => handleReport("Spam or duplicate listing")}
+                // onPress={() => handleReport("Spam or duplicate listing")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Asking for a price"} 
                 icon={"currency-usd-off"}
-                onPress={() => handleReport("Asking for a price")}
+                // onPress={() => handleReport("Asking for a price")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Prohibited item"} 
                 icon={"cancel"}
-                onPress={() => handleReport("Prohibited item")}
+                // onPress={() => handleReport("Prohibited item")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Harassment or rude behavior"} 
                 icon={"account-alert-outline"}
-                onPress={() => handleReport("Harassment or rude behavior")}
+                // onPress={() => handleReport("Harassment or rude behavior")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Suspicious activity"} 
                 icon={"eye-off-outline"}
-                onPress={() => handleReport("Suspicious activity")}
+                // onPress={() => handleReport("Suspicious activity")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
                 text={"Other"} 
                 icon={"dots-horizontal"}
-                onPress={() => handleReport("Other")}
+                // onPress={() => handleReport("Other")}
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 

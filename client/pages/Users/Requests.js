@@ -25,9 +25,7 @@ function Requests(props) {
               status={"available"}
               rating={"3.7"}
               condition={"Heavily used"}
-              title={"Request"}
               time={""}
-              onPressBtn={""}
               isMine={false}
               iRequested={true}
               isDisabled={false}
@@ -49,7 +47,6 @@ function Requests(props) {
               rating={"Unrated"}
               condition={"Very good"}
               time={""}
-              onPressBtn={""}
               isMine={true}
               isDisabled={false}
             ></Post>

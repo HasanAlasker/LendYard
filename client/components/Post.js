@@ -32,8 +32,6 @@ function Post({
   time,
   condition,
   title,
-  onPressBtn,
-  onPressThree,
   isDisabled,
 }) {
   const styles = useThemedStyles(getStyles);
@@ -65,7 +63,6 @@ function Post({
           {
             <PrimaryBtn
               title={title}
-              onPress={onPressBtn}
               isDisabled={isDisabled}
               status={status}
               isMine={isMine}

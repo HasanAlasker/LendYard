@@ -6,7 +6,6 @@ import TopChunkProfile from "../../components/TopChunkProfile";
 import Post from "../../components/Post";
 import SettingsMenu from "../../components/SettingsMenu";
 import { useState } from "react";
-import PostMenu from "../../components/PostMenu";
 
 function Profile({userName, isNotification, myProfile=true, userPic, userRate, sep}) {
   const [isMenu, setIsMenu]= useState(false)

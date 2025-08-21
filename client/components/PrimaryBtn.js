@@ -8,7 +8,6 @@ import { useState } from "react";
 
 function PrimaryBtn({
   title,
-  onPress,
   isDisabled,
   isMine,
   iBorrowed,

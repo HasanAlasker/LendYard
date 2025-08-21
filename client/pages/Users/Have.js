@@ -25,9 +25,7 @@ function Have(props) {
           status={"taken"}
           rating={4.9}
           condition={"Slightly used"}
-          title={"Request"}
           time={""}
-          onPressBtn={''}
           isDisabled={false}
         ></Post>
         <Post
@@ -41,9 +39,7 @@ function Have(props) {
           status={"available"}
           rating={'Unrated'}
           condition={"Heavily used"}
-          title={"Request"}
           time={""}
-          onPressBtn={''}
           isDisabled={false}
         ></Post>
       </ScrollScreen>

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { View, StyleSheet, Modal, TouchableWithoutFeedback } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import AppText from "../config/AppText";
 import PlusMinusBtn from "./PlusMinusBtn";
 import RequestBtn from "./RequestBtn";
-import PrimaryBtn from "./PrimaryBtn";
 
 function RequestModal({ isVisibile, onClose }) {
   const styles = useThemedStyles(getStyles);

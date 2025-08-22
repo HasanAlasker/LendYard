@@ -3,12 +3,12 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 
-function PlusMinusBtn({ icon, onPress }) {
+function PlusMinusBtn({ icon, onPress, disabled, style }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity disabled={disabled} onPress={onPress} style={[styles.container, style]}>
       <Feather name={icon} size={27} color={theme.main_text}></Feather>
     </TouchableOpacity>
   );

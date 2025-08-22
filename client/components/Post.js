@@ -15,6 +15,7 @@ import AcceptRejectBtn from "./AcceptRejectBtn";
 import { useRoute } from "@react-navigation/native";
 import PostMenu from "./PostMenu";
 import { useState } from "react";
+import ItemPricing from "./ItemPricing";
 
 function Post({
   profilePic,
@@ -33,6 +34,7 @@ function Post({
   condition,
   title,
   isDisabled,
+  price
 }) {
   const styles = useThemedStyles(getStyles);
   const route = useRoute();
@@ -55,7 +57,9 @@ function Post({
         <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
         <LableContainer>
           {area && <Location area={area}></Location>}
-          <ItemStatus status={status} time={time}></ItemStatus>
+          <RowLableCont>
+            <ItemStatus status={status} time={time}></ItemStatus>
+          </RowLableCont>
           <RowLableCont>
             {rating && <ItemRating rating={rating}></ItemRating>}
             {condition && <ItemCondition condition={condition}></ItemCondition>}

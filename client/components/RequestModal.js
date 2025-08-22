@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { View, StyleSheet, Modal, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Modal,
+  TouchableWithoutFeedback,
+} from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import AppText from "../config/AppText";
 import PlusMinusBtn from "./PlusMinusBtn";
@@ -8,50 +13,118 @@ import RequestBtn from "./RequestBtn";
 function RequestModal({ isVisibile, onClose }) {
   const styles = useThemedStyles(getStyles);
 
-  const [duration, setDuration] = useState(0)
-  const [baseUnit, setBaseUnit] = useState('') // Store base unit
-  const [active, setActive] = useState(null)
+  const [duration, setDuration] = useState(0);
+  const [baseUnit, setBaseUnit] = useState(""); // Store base unit
+  const [active, setActive] = useState(null);
 
-  const increase = () => setDuration(prev => Math.min(prev + 1, 99))
-  const decrease = () => setDuration(prev => Math.max(prev - 1, 1))
+  const increase = () => setDuration((prev) => Math.min(prev + 1, 99));
+  const decrease = () => setDuration((prev) => Math.max(prev - 1, 1));
 
   const handleUnit = (units) => {
-    setBaseUnit(units)
-    setActive(units)
-  }
+    setBaseUnit(units);
+    setActive(units);
+
+    if (units === "hours" && duration > 23) {
+      setDuration(23);
+    }
+    if (units === "days" && duration > 29) {
+      setDuration(29);
+    }
+    if (units === "weeks" && duration > 3) {
+      setDuration(3);
+    }
+    if (units === "months" && duration > 12) {
+      setDuration(12);
+    }
+    if (duration === 0) {
+      setDuration(1); // Set to 1 when switching units if currently 0
+    }
+  };
+  const handleRent = () => {};
+  const disableIncrease = () => {
+    if (baseUnit === "hours" && duration >= 23) return true;
+    if (baseUnit === "days" && duration >= 29) return true;
+    if (baseUnit === "weeks" && duration >= 3) return true;
+    if (baseUnit === "months" && duration >= 12) return true;
+  };
+  const disabledButton = () => {
+    return disableIncrease() ? 0.2 : 1;
+  };
 
   // Compute the display unit on each render
-  const displayUnit = baseUnit ? (duration === 1 ? baseUnit.slice(0, -1) : baseUnit) : ''
+  const displayUnit = baseUnit
+    ? duration === 1
+      ? baseUnit.slice(0, -1)
+      : baseUnit
+    : "";
 
   return (
     <Modal transparent={true} visible={isVisibile}>
       <View style={styles.container}>
         <AppText style={styles.text}>Duration</AppText>
         <View style={styles.addMinus}>
-            <PlusMinusBtn icon={'minus'} onPress={decrease}></PlusMinusBtn>
-            <AppText style={styles.number}>{duration}</AppText>
-            <PlusMinusBtn icon={'plus'} onPress={increase}></PlusMinusBtn>
+          <PlusMinusBtn icon={"minus"} onPress={decrease}></PlusMinusBtn>
+          <AppText style={styles.number}>{duration}</AppText>
+          <PlusMinusBtn
+            icon={"plus"}
+            onPress={increase}
+            disabled={disableIncrease()}
+            style={{ opacity: disabledButton() }}
+          ></PlusMinusBtn>
         </View>
         <AppText style={styles.text}>Time unit</AppText>
         <View style={styles.buttons}>
-            <View style={styles.buttons}>
-                <RequestBtn title={'Hours'} isActive={active === 'hours'} onPress={()=> handleUnit('hours')} ></RequestBtn>
-                <RequestBtn title={'Days'} isActive={active === 'days'} onPress={()=> handleUnit('days')} ></RequestBtn>
-                <RequestBtn title={'Weeks'} isActive={active === 'weeks'} onPress={()=> handleUnit('weeks')} ></RequestBtn>
-                <RequestBtn title={'Months'} isActive={active === 'months'} onPress={()=> handleUnit('months')} ></RequestBtn>
-            </View>
+          <View style={styles.buttons}>
+            <RequestBtn
+              title={"Hours"}
+              isActive={active === "hours"}
+              onPress={() => handleUnit("hours")}
+            ></RequestBtn>
+            <RequestBtn
+              title={"Days"}
+              isActive={active === "days"}
+              onPress={() => handleUnit("days")}
+            ></RequestBtn>
+            <RequestBtn
+              title={"Weeks"}
+              isActive={active === "weeks"}
+              onPress={() => handleUnit("weeks")}
+            ></RequestBtn>
+            <RequestBtn
+              title={"Months"}
+              isActive={active === "months"}
+              onPress={() => handleUnit("months")}
+            ></RequestBtn>
+          </View>
         </View>
-        {duration > 0 && displayUnit != "" && <View style={styles.display}>
+        {duration > 0 && displayUnit != "" && (
+          <View style={styles.display}>
             <AppText style={styles.faded}>Requesting for:</AppText>
-            <AppText style={styles.text}>{duration} {displayUnit}</AppText>
-        </View>}
-        {duration > 0 && displayUnit != "" && <View style={styles.buttons}>
+            <AppText style={styles.text}>
+              {duration} {displayUnit}
+            </AppText>
+          </View>
+        )}
+        {duration > 0 && displayUnit != "" && (
+          <View style={styles.buttons}>
             <View style={styles.buttons}>
-                <RequestBtn title={'Request'} isGreen={true}></RequestBtn>
-                <RequestBtn title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>
+              <RequestBtn title={"Request"} isGreen={true}></RequestBtn>
+              <RequestBtn
+                title={"Cancel"}
+                isRed={true}
+                onPress={onClose}
+              ></RequestBtn>
             </View>
-        </View>}
-        {(duration === 0 || displayUnit === '') && <RequestBtn style={styles.fullBtn} title={'Cancel'} isRed={true} onPress={onClose}></RequestBtn>}
+          </View>
+        )}
+        {(duration === 0 || displayUnit === "") && (
+          <RequestBtn
+            style={styles.fullBtn}
+            title={"Cancel"}
+            isRed={true}
+            onPress={onClose}
+          ></RequestBtn>
+        )}
       </View>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}></View>
@@ -69,8 +142,8 @@ const getStyles = (theme) =>
       backgroundColor: theme.post,
       zIndex: 250,
       borderRadius: 15,
-      paddingHorizontal:20,
-      paddingVertical:25,
+      paddingHorizontal: 20,
+      paddingVertical: 25,
 
       shadowColor: "black",
       shadowOffset: {
@@ -89,51 +162,50 @@ const getStyles = (theme) =>
       backgroundColor: theme.background,
       opacity: 0.5,
     },
-    text:{
-        fontSize:20,
-        color:theme.main_text
+    text: {
+      fontSize: 20,
+      color: theme.main_text,
     },
-    addMinus:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-        gap:25,
-        marginBottom:10
+    addMinus: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 25,
+      marginBottom: 10,
     },
-    number:{
-        fontSize:85,
-        color:theme.purple,
-        fontWeight:'bold',
-
+    number: {
+      fontSize: 85,
+      color: theme.purple,
+      fontWeight: "bold",
     },
-    buttons:{
-        flexDirection:'row'
-        ,flexWrap:'wrap',
-        width:'100%',
-        rowGap:20,
-        justifyContent:'space-between',
-        marginTop:10
+    buttons: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      width: "100%",
+      rowGap: 20,
+      justifyContent: "space-between",
+      marginTop: 10,
     },
-    display:{
-        width:'100%',
-        backgroundColor:theme.light_gray,
-        flexDirection:'row',
-        alignItems:'center',
-        paddingHorizontal:20,
-        paddingVertical:20,
-        borderRadius:10,
-        gap:10,
-        marginTop:30,
-        marginBottom:30
-    }
-    ,faded:{
-        color:theme.darker_gray,
-        fontSize:20,
+    display: {
+      width: "100%",
+      backgroundColor: theme.light_gray,
+      flexDirection: "row",
+      alignItems: "center",
+      paddingHorizontal: 20,
+      paddingVertical: 20,
+      borderRadius: 10,
+      gap: 10,
+      marginTop: 30,
+      marginBottom: 30,
     },
-    fullBtn:{
-        width:'100%',
-        marginTop:40
-    }
+    faded: {
+      color: theme.darker_gray,
+      fontSize: 20,
+    },
+    fullBtn: {
+      width: "100%",
+      marginTop: 40,
+    },
   });
 
 export default RequestModal;

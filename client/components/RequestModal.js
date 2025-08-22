@@ -9,9 +9,12 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import AppText from "../config/AppText";
 import PlusMinusBtn from "./PlusMinusBtn";
 import RequestBtn from "./RequestBtn";
+import { FontAwesome6 } from "@expo/vector-icons";
+import { useTheme } from "../config/ThemeContext";
 
-function RequestModal({ isVisibile, onClose }) {
+function RequestModal({ isVisibile, onClose, pricePerDay = 10 }) {
   const styles = useThemedStyles(getStyles);
+  const { theme } = useTheme();
 
   const [duration, setDuration] = useState(0);
   const [baseUnit, setBaseUnit] = useState(""); // Store base unit
@@ -40,7 +43,7 @@ function RequestModal({ isVisibile, onClose }) {
       setDuration(1); // Set to 1 when switching units if currently 0
     }
   };
-  const handleRent = () => {};
+
   const disableIncrease = () => {
     if (baseUnit === "hours" && duration >= 23) return true;
     if (baseUnit === "days" && duration >= 29) return true;
@@ -49,6 +52,13 @@ function RequestModal({ isVisibile, onClose }) {
   };
   const disabledButton = () => {
     return disableIncrease() ? 0.2 : 1;
+  };
+  const showPrice = () => {
+    if (baseUnit === "hours") return pricePerDay;
+    else if (baseUnit === "days") return pricePerDay * duration;
+    else if (baseUnit === "weeks") return pricePerDay * duration * 7;
+    else if (baseUnit === "months") return pricePerDay * duration * 30;
+    else return "Invalid";
   };
 
   // Compute the display unit on each render
@@ -99,10 +109,28 @@ function RequestModal({ isVisibile, onClose }) {
         </View>
         {duration > 0 && displayUnit != "" && (
           <View style={styles.display}>
-            <AppText style={styles.faded}>Requesting for:</AppText>
-            <AppText style={styles.text}>
-              {duration} {displayUnit}
-            </AppText>
+            <View style={styles.row}>
+              <AppText style={styles.faded}>Requesting for:</AppText>
+              <AppText style={styles.text}>
+                {duration} {displayUnit}
+              </AppText>
+            </View>
+            <View style={styles.row}>
+              <AppText style={styles.faded}>Total cost:</AppText>
+              <AppText style={styles.text}>
+                {showPrice()}
+                {" JD"}
+              </AppText>
+            </View>
+            {baseUnit === 'hours' && <View style={styles.row}>
+              <FontAwesome6
+                name="circle-exclamation"
+                color={theme.darker_gray}
+              ></FontAwesome6>
+              <AppText style={[styles.faded, styles.small]}>
+                Hourly rentals are charged for a full day
+              </AppText>
+            </View>}
           </View>
         )}
         {duration > 0 && displayUnit != "" && (
@@ -155,6 +183,11 @@ const getStyles = (theme) =>
 
       elevation: 6,
     },
+    row: {
+      gap: 10,
+      flexDirection: "row",
+      alignItems: "center",
+    },
     overlay: {
       position: "absolute",
       width: "100%",
@@ -189,8 +222,6 @@ const getStyles = (theme) =>
     display: {
       width: "100%",
       backgroundColor: theme.light_gray,
-      flexDirection: "row",
-      alignItems: "center",
       paddingHorizontal: 20,
       paddingVertical: 20,
       borderRadius: 10,
@@ -205,6 +236,9 @@ const getStyles = (theme) =>
     fullBtn: {
       width: "100%",
       marginTop: 40,
+    },
+    small: {
+      fontSize: 15,
     },
   });
 

@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 
-function RowLableCont({children}) {
+function RowLableCont({children, style}) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
         {children}
     </View>
   );
@@ -11,7 +11,8 @@ function RowLableCont({children}) {
 const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
-    gap:30
+    gap:30,
+    alignItems:'center'
   },
 })
 

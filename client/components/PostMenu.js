@@ -88,7 +88,7 @@ function PostMenu({ isVisible, onClose, isMine }) {
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
-                text={"Asking for a price"} 
+                text={"Unreasonable pricing"} 
                 icon={"currency-usd-off"}
                 // onPress={() => handleReport("Asking for a price")}
               />

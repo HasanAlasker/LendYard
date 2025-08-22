@@ -4,13 +4,17 @@ import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
 import AppText from "../config/AppText";
 
-function ItemPricing({price}) {
+function ItemPricing({ pricePerDay }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
   return (
     <View style={styles.container}>
-      <AppText style={styles.text}>{price}</AppText>
+      {pricePerDay && pricePerDay !== 0 ? (
+        <AppText style={styles.text}>JD {pricePerDay}/Day</AppText>
+      ) : (
+        <AppText style={styles.text}>Free</AppText>
+      )}
     </View>
   );
 }
@@ -20,16 +24,11 @@ const getStyles = (theme) =>
     container: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 10,
-      backgroundColor:theme.red,
-      paddingHorizontal:10,
-      paddingVertical:5,
-      borderRadius:20
     },
     text: {
       fontSize: 16,
+      color: theme.green,
       fontWeight: "bold",
-      color: theme.always_white,
     },
   });
 

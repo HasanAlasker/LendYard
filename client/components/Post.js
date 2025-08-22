@@ -34,7 +34,7 @@ function Post({
   condition,
   title,
   isDisabled,
-  price
+  pricePerDay
 }) {
   const styles = useThemedStyles(getStyles);
   const route = useRoute();
@@ -54,7 +54,7 @@ function Post({
           onPressThree={handelMenu}
         ></TopOfPost>
         <ItmeImage source={image}></ItmeImage>
-        <ItemNameAndCat itemName={itemName} itemCat={itemCat}></ItemNameAndCat>
+        <ItemNameAndCat itemName={itemName} itemCat={itemCat} pricePerDay={pricePerDay}></ItemNameAndCat>
         <LableContainer>
           {area && <Location area={area}></Location>}
           <RowLableCont>

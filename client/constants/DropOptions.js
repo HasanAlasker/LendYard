@@ -224,6 +224,28 @@ export const condition = [
   { label: "Needs Repair", value: "needs_repair" }
 ];
 
+export const price = [
+  { label: "Free", value: "0" },
+  { label: "1 JD", value: "1" },
+  { label: "2 JD", value: "2" },
+  { label: "3 JD", value: "3" },
+  { label: "5 JD", value: "5" },
+  { label: "7 JD", value: "7" },
+  { label: "10 JD", value: "10" },
+  { label: "15 JD", value: "15" },
+  { label: "20 JD", value: "20" },
+  { label: "25 JD", value: "25" },
+  { label: "30 JD", value: "30" },
+  { label: "40 JD", value: "40" },
+  { label: "50 JD", value: "50" },
+  { label: "75 JD", value: "75" },
+  { label: "100 JD", value: "100" },
+  { label: "150 JD", value: "150" },
+  { label: "200 JD", value: "200" },
+  { label: "250 JD", value: "250" },
+  { label: "300 JD", value: "300" },
+];
+
 // Helper functions to filter items by category and areas by city
 export const getItemsByCategory = (categoryValue) => {
   return items.filter(item => item.category === categoryValue);

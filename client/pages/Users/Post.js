@@ -13,6 +13,7 @@ import {
   areas,
   categories,
   items,
+  price,
   cities,
   condition,
   getAreasByCity,
@@ -76,6 +77,8 @@ const validationSchema = Yup.object().shape({
       if (!value) return false;
       return value.uri || typeof value === "string";
     }),
+
+  price: Yup.string().required("Please choose pricing"),
 });
 
 function Post(props) {
@@ -84,6 +87,7 @@ function Post(props) {
   const initialValues = {
     category: "",
     item: "",
+    price: "",
     city: "",
     area: "",
     condition: "",
@@ -190,6 +194,13 @@ function Post(props) {
                   placeholder="Select Item"
                   items={availableItems}
                   disabled={!values.category || availableItems.length === 0}
+                  hasBeenSubmitted={hasBeenSubmitted}
+                />
+
+                <FormikDropBox
+                  name="price"
+                  placeholder="Select Price Per Day"
+                  items={price}
                   hasBeenSubmitted={hasBeenSubmitted}
                 />
 

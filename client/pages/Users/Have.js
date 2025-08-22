@@ -27,7 +27,7 @@ function Have(props) {
           condition={"Slightly used"}
           time={""}
           isDisabled={false}
-          price={'5 JD per day'}
+          pricePerDay={6}
         ></Post>
         <Post
           name={"Yazan Nabas"}
@@ -42,7 +42,6 @@ function Have(props) {
           condition={"Heavily used"}
           time={""}
           isDisabled={false}
-          price={'5 JD /Day'}
         ></Post>
       </ScrollScreen>
       <Navbar></Navbar>

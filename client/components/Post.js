@@ -24,6 +24,7 @@ function Post({
   image,
   itemName,
   itemCat,
+  city,
   area,
   isMine,
   iBorrowed,
@@ -56,7 +57,7 @@ function Post({
         <ItmeImage source={image}></ItmeImage>
         <ItemNameAndCat itemName={itemName} itemCat={itemCat} pricePerDay={pricePerDay}></ItemNameAndCat>
         <LableContainer>
-          {area && <Location area={area}></Location>}
+          {area && <Location city={city} area={area}></Location>}
           <RowLableCont>
             <ItemStatus status={status} time={time}></ItemStatus>
           </RowLableCont>

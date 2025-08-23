@@ -20,6 +20,7 @@ import {
   getItemsByCategory,
 } from "../../constants/DropOptions";
 import SubmitBtn from "../../components/SubmitBtn";
+import { usePosts } from "../../config/PostContext";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string()
@@ -83,7 +84,7 @@ const validationSchema = Yup.object().shape({
 
 function Post(props) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
-
+  const { addPost } = usePosts();
   const initialValues = {
     category: "",
     item: "",
@@ -94,10 +95,28 @@ function Post(props) {
     image: null,
   };
 
-  // Handle form submission
   const handleSubmit = (values, { setSubmitting, setStatus, resetForm }) => {
     console.log("Post form values:", values);
-    setHasBeenSubmitted(true); // Mark form as submitted
+
+    const userImageUri = ""; // Get from user context
+    const username = ""; // Get from user context
+    const status = "available"; // Default status
+    const rating = null; // Default rating
+
+    addPost(
+      userImageUri,
+      username,
+      values.image, // This is the imageUri
+      values.category,
+      values.item,
+      values.price,
+      values.city,
+      values.area,
+      values.condition,
+      status,
+      rating
+    );
+    setHasBeenSubmitted(true);
 
     // Simulate API call
     setTimeout(() => {
@@ -126,7 +145,6 @@ function Post(props) {
           onSubmit={handleSubmit}
         >
           {({ values, errors, setFieldValue, setStatus }) => {
-            // Dynamic items and areas state
             const [availableItems, setAvailableItems] = useState([]);
             const [availableAreas, setAvailableAreas] = useState([]);
 

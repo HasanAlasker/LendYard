@@ -21,6 +21,7 @@ function Have(props) {
           image={require('../../assets/Pics/lm.png')}
           itemName={"Lawn mower"}
           itemCat={'Garden'}
+          city={'Amman'}
           area={"Jabal al kursi"}
           status={"taken"}
           rating={4.9}
@@ -36,6 +37,7 @@ function Have(props) {
           image={require('../../assets/Pics/image.png')}
           itemName={"Electric saw"}
           itemCat={'Tools'}
+          city={'Amman'}
           area={"Al madinah al munawara Street"}
           status={"available"}
           rating={'Unrated'}

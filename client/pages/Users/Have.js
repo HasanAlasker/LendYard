@@ -27,7 +27,7 @@ function Have(props) {
           condition={"Slightly used"}
           time={""}
           isDisabled={false}
-          pricePerDay={6}
+          pricePerDay={300 }
         ></Post>
         <Post
           name={"Yazan Nabas"}

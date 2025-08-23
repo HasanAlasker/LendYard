@@ -94,6 +94,12 @@ function PostMenu({ isVisible, onClose, isMine }) {
               />
               <SeparatorComp style={styles.sep} />
               <MenuOption 
+                text={"Price doesn't match listing"} 
+                icon={"currency-usd"}
+                // onPress={() => handleReport("Asking for a price")}
+              />
+              <SeparatorComp style={styles.sep} />
+              <MenuOption 
                 text={"Prohibited item"} 
                 icon={"cancel"}
                 // onPress={() => handleReport("Prohibited item")}

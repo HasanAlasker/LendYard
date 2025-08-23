@@ -54,7 +54,9 @@ function RequestModal({ isVisibile, onClose, pricePerDay }) {
     return disableIncrease() ? 0.2 : 1;
   };
   const showPrice = () => {
-    if (baseUnit === "hours") return pricePerDay;
+    if (baseUnit === "hours") {
+      return pricePerDay <= 25 ? pricePerDay : (pricePerDay / 24) * duration;
+    } 
     else if (baseUnit === "days") return pricePerDay * duration;
     else if (baseUnit === "weeks") return pricePerDay * duration * 7;
     else if (baseUnit === "months") return pricePerDay * duration * 30;
@@ -117,20 +119,26 @@ function RequestModal({ isVisibile, onClose, pricePerDay }) {
             </View>
             <View style={styles.row}>
               <AppText style={styles.faded}>Total cost:</AppText>
-              {pricePerDay ? <AppText style={styles.text}>
-                {showPrice()}
-                {" JD"}
-              </AppText> : <AppText style={styles.text}>Free</AppText>}
+              {pricePerDay ? (
+                <AppText style={styles.text}>
+                  {showPrice()}
+                  {" JD"}
+                </AppText>
+              ) : (
+                <AppText style={styles.text}>Free</AppText>
+              )}
             </View>
-            {baseUnit === 'hours' && pricePerDay && <View style={styles.row}>
-              <FontAwesome6
-                name="circle-exclamation"
-                color={theme.darker_gray}
-              ></FontAwesome6>
-              <AppText style={[styles.faded, styles.small]}>
-                Hourly rentals are charged for a full day
-              </AppText>
-            </View>}
+            {baseUnit === "hours" && (pricePerDay > 0 && pricePerDay <=25) && (
+              <View style={styles.row}>
+                <FontAwesome6
+                  name="circle-exclamation"
+                  color={theme.darker_gray}
+                ></FontAwesome6>
+                <AppText style={[styles.faded, styles.small]}>
+                  Items ≤ 25 JD are charged for a full day
+                </AppText>
+              </View>
+            )}
           </View>
         )}
         {duration > 0 && displayUnit != "" && (
@@ -166,7 +174,7 @@ const getStyles = (theme) =>
     container: {
       width: "90%",
       margin: "auto",
-      maxHeight: "80%",
+
       backgroundColor: theme.post,
       zIndex: 250,
       borderRadius: 15,

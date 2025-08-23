@@ -12,7 +12,7 @@ import RequestBtn from "./RequestBtn";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { useTheme } from "../config/ThemeContext";
 
-function RequestModal({ isVisibile, onClose, pricePerDay = 10 }) {
+function RequestModal({ isVisibile, onClose, pricePerDay }) {
   const styles = useThemedStyles(getStyles);
   const { theme } = useTheme();
 
@@ -117,12 +117,12 @@ function RequestModal({ isVisibile, onClose, pricePerDay = 10 }) {
             </View>
             <View style={styles.row}>
               <AppText style={styles.faded}>Total cost:</AppText>
-              <AppText style={styles.text}>
+              {pricePerDay ? <AppText style={styles.text}>
                 {showPrice()}
                 {" JD"}
-              </AppText>
+              </AppText> : <AppText style={styles.text}>Free</AppText>}
             </View>
-            {baseUnit === 'hours' && <View style={styles.row}>
+            {baseUnit === 'hours' && pricePerDay && <View style={styles.row}>
               <FontAwesome6
                 name="circle-exclamation"
                 color={theme.darker_gray}

@@ -72,6 +72,7 @@ function Post({
               isMine={isMine}
               iBorrowed={iBorrowed}
               iRequested={iRequested}
+              pricePerDay={pricePerDay}
             ></PrimaryBtn>
           }
           {route.name === "Requests" && status === "requested" && (

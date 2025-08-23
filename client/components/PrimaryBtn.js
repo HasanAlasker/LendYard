@@ -13,6 +13,7 @@ function PrimaryBtn({
   iBorrowed,
   iRequested,
   status,
+  pricePerDay
 }) {
   const { theme } = useTheme();
   const styles = useThemedStyles(getStyles);
@@ -81,7 +82,7 @@ function PrimaryBtn({
       >
         <AppText style={styles.text}>{renderBtnText()}</AppText>
       </TouchableOpacity>
-      <RequestModal isVisibile={visibleRequest} onClose={()=> {setVisibileRequest(false)}}></RequestModal>
+      <RequestModal isVisibile={visibleRequest} onClose={()=> {setVisibileRequest(false)}} pricePerDay={pricePerDay}></RequestModal>
     </>
   );
 }

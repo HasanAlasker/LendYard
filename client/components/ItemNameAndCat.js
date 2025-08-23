@@ -28,7 +28,7 @@ const getStyles = (theme) =>
       gap: 0,
     },
     itemName: {
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: "bold",
       color: theme.main_text,
     },
@@ -38,7 +38,8 @@ const getStyles = (theme) =>
       fontWeight: "bold",
     },
     row:{
-      gap:20
+      gap:20,
+      // justifyContent:'space-between'
     }
   });
 

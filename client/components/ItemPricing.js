@@ -11,7 +11,7 @@ function ItemPricing({ pricePerDay }) {
   return (
     <View style={styles.container}>
       {pricePerDay && pricePerDay !== 0 ? (
-        <AppText style={styles.text}>JD {pricePerDay}/Day</AppText>
+        <AppText style={styles.text}>{pricePerDay} JD/ Day</AppText>
       ) : (
         <AppText style={styles.text}>Free</AppText>
       )}
@@ -26,7 +26,7 @@ const getStyles = (theme) =>
       alignItems: "center",
     },
     text: {
-      fontSize: 16,
+      fontSize: 20,
       color: theme.green,
       fontWeight: "bold",
     },

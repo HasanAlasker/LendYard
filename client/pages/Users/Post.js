@@ -72,11 +72,13 @@ const validationSchema = Yup.object().shape({
       "Please select a valid condition"
     ),
 
-  image: Yup.mixed()
+  image: Yup.string()
+    .nullable()
     .required("Please add an image")
-    .test("file-type", "Please select a valid image file", (value) => {
+    .test("valid-uri", "Please select a valid image", (value) => {
       if (!value) return false;
-      return value.uri || typeof value === "string";
+      // Check if it's a valid URI string
+      return typeof value === "string" && value.length > 0;
     }),
 
   price: Yup.string().required("Please choose pricing"),
@@ -103,19 +105,19 @@ function Post(props) {
     const status = "available"; // Default status
     const rating = null; // Default rating
 
-    addPost(
-      userImageUri,
-      username,
-      values.image,
-      values.category,
-      values.item,
-      values.price,
-      values.city,
-      values.area,
-      values.condition,
+    addPost({
+      userImageUri: "../../assets/Pics/hasan.png", // hardcode for now
+      username: "Hasan Alasker", // hardcode for now
+      image: values.image,
+      category: values.category,
+      item: values.item,
+      price: values.price,
+      city: values.city,
+      area: values.area,
+      condition: values.condition,
       status,
       rating
-    );
+    });
     setHasBeenSubmitted(true);
 
     // Simulate API call
@@ -191,9 +193,10 @@ function Post(props) {
             return (
               <>
                 <AddImageBtn
-                  image={values.image}
-                  onImageChange={(image) => {
-                    setFieldValue("image", image);
+                  image={values.image} // This will now correctly show the image
+                  onImageChange={(imageUri) => {
+                    console.log("Image selected:", imageUri); // Debug log
+                    setFieldValue("image", imageUri);
                     setStatus(null);
                   }}
                   error={hasBeenSubmitted && errors.image}

@@ -1,63 +1,164 @@
-import { useContext, createContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const PostContext = createContext()
+const PostContext = createContext();
 
-function PostProvider({children}){
-    const [posts, setPosts] = useState([])
+export const PostProvider = ({ children }) => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const addPost = (userImageUri, username, imageUri, category, item, pricePerDay, city, area, condition, status, rating) => {
-        const newPost = {
-            id: Date.now(),
-            userImageUri,
-            username,
-            imageUri,
-            category,
-            item,
-            pricePerDay,
-            city,
-            area,
-            condition,
-            status,
-            rating,
-            createdAt: new Date().toISOString()
-        }
-        setPosts(prevPosts => [newPost, ...prevPosts])
+  // Load posts from AsyncStorage on app start
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
+  // Load posts from storage
+  const loadPosts = async () => {
+    try {
+      setLoading(true);
+      const storedPosts = await AsyncStorage.getItem('posts');
+      if (storedPosts) {
+        setPosts(JSON.parse(storedPosts));
+      }
+    } catch (error) {
+      console.error('Error loading posts:', error);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const deletePost = (postId) => {
-        setPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
+  // Save posts to storage
+  const savePosts = async (postsToSave) => {
+    try {
+      await AsyncStorage.setItem('posts', JSON.stringify(postsToSave));
+    } catch (error) {
+      console.error('Error saving posts:', error);
     }
+  };
 
-    const editPost = (postId, updatedData) => {
-        setPosts(prevPosts => prevPosts.map(post => post.id === postId ? {...post, ...updatedData, updatedAt: new Date().toISOString()} : post))
+  // Add a new post
+  const addPost = async (
+    userImageUri,
+    username,
+    userId,
+    image,
+    category,
+    item,
+    price,
+    city,
+    area,
+    condition,
+    status = 'available',
+    rating = null
+  ) => {
+    try {
+      const newPost = {
+        id: Date.now().toString(), // Simple ID generation
+        userImageUri,
+        username,
+        userId,
+        image,
+        category,
+        item,
+        price,
+        city,
+        area,
+        condition,
+        status,
+        rating,
+        createdAt: new Date().toLocaleDateString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      const updatedPosts = [newPost, ...posts];
+      setPosts(updatedPosts);
+      await savePosts(updatedPosts);
+      return newPost;
+    } catch (error) {
+      console.error('Error adding post:', error);
+      throw error;
     }
+  };
 
-    const getPostById = (postId) => {
-        return posts.find(post => post.id === postId)
+  // Update post status
+  const updatePostStatus = async (postId, newStatus) => {
+    try {
+      const updatedPosts = posts.map(post =>
+        post.id === postId
+          ? { ...post, status: newStatus, updatedAt: new Date().toISOString() }
+          : post
+      );
+      setPosts(updatedPosts);
+      await savePosts(updatedPosts);
+    } catch (error) {
+      console.error('Error updating post status:', error);
+      throw error;
     }
+  };
 
-    const value = { // the values i want to share with other components
-        posts,
-        addPost,
-        deletePost,
-        editPost,
-        getPostById,
+  // Delete a post
+  const deletePost = async (postId) => {
+    try {
+      const updatedPosts = posts.filter(post => post.id !== postId);
+      setPosts(updatedPosts);
+      await savePosts(updatedPosts);
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      throw error;
     }
+  };
 
-    // the chanel i share the values through
-    return(
-       <PostContext.Provider value={value}>
-            {children}
-       </PostContext.Provider>
-    )
-}
+  // Get posts by user
+  const getPostsByUser = (userId) => {
+    return posts.filter(post => post.userId === userId);
+  };
 
-function usePosts () {
-    const context = useContext(PostContext)
-    if(!context) {
-        throw new Error('usePosts must be used within PostProvider')
-    }
-    return context
-}
+  // Get posts by status
+  const getPostsByStatus = (status) => {
+    return posts.filter(post => post.status === status);
+  };
 
-export { PostProvider, usePosts}
+  // Get posts by category
+  const getPostsByCategory = (category) => {
+    return posts.filter(post => post.category === category);
+  };
+
+  // Search posts
+  const searchPosts = (query) => {
+    const lowercaseQuery = query.toLowerCase();
+    return posts.filter(post =>
+      post.item.toLowerCase().includes(lowercaseQuery) ||
+      post.category.toLowerCase().includes(lowercaseQuery) ||
+      post.city.toLowerCase().includes(lowercaseQuery) ||
+      post.area.toLowerCase().includes(lowercaseQuery)
+    );
+  };
+
+  const value = {
+    posts,
+    loading,
+    addPost,
+    updatePostStatus,
+    deletePost,
+    getPostsByUser,
+    getPostsByStatus,
+    getPostsByCategory,
+    searchPosts,
+  };
+
+  return (
+    <PostContext.Provider value={value}>
+      {children}
+    </PostContext.Provider>
+  );
+};
+
+export const usePosts = () => {
+  const context = useContext(PostContext);
+  if (!context) {
+    throw new Error('usePosts must be used within a PostProvider');
+  }
+  return context;
+};
+
+export default PostContext;

@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
-import SafeScreen from "../../components/SafeScreen";
-import ScrollScreen from "../../components/ScrollScreen";
-import Navbar from "../../components/Navbar";
-import AddImageBtn from "../../components/AddImageBtn";
-import FormikDropBox from "../../components/FormikDropBox";
-
-import { Formik } from "formik";
-import * as Yup from "yup";
-
+import { View, StyleSheet, Modal, ScrollView } from "react-native";
+import AppForm from "./AppForm";
+import FormikDropBox from "./FormikDropBox";
+import AddImageBtn from "./AddImageBtn";
 import {
   areas,
   categories,
@@ -18,9 +12,12 @@ import {
   condition,
   getAreasByCity,
   getItemsByCategory,
-} from "../../constants/DropOptions";
-import SubmitBtn from "../../components/SubmitBtn";
-import { usePosts } from "../../config/PostContext";
+} from "../constants/DropOptions";
+import SubmitBtn from "./SubmitBtn";
+import { usePosts } from "../config/PostContext";
+import useThemedStyles from "../hooks/useThemedStyles";
+
+import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string()
@@ -82,64 +79,80 @@ const validationSchema = Yup.object().shape({
   price: Yup.string().required("Please choose pricing"),
 });
 
-function Post(props) {
+function EditPostModal({
+  postId, // This is what you need to identify which post to edit
+  visible = true,
+  onClose,
+}) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
-  const { addPost } = usePosts();
+  const { editPost, getPostById } = usePosts();
+  const styles = useThemedStyles(getStyles)
+  const existingPost = getPostById(postId);
+  
+  // If no post found, return null or show error
+  if (!existingPost) {
+    console.error(`Post with id ${postId} not found`);
+    return null;
+  }
+
   const initialValues = {
-    category: "",
-    item: "",
-    price: "",
-    city: "",
-    area: "",
-    condition: "",
-    image: null,
+    category: existingPost.category || "",
+    item: existingPost.item || "",
+    price: existingPost.pricePerDay || "", // Note: using pricePerDay from context
+    city: existingPost.city || "",
+    area: existingPost.area || "",
+    condition: existingPost.condition || "",
+    image: existingPost.imageUri || null, // Note: using imageUri from context
   };
 
   const handleSubmit = (values, { setSubmitting, setStatus, resetForm }) => {
-    console.log("Post form values:", values);
+    console.log("Edit form values:", values);
 
-    const userImageUri = ""; // Get from user context
-    const username = ""; // Get from user context
-    const status = "available"; // Default status
-    const rating = null; // Default rating
+    try {
+      // Update the post using editPost function
+      const updatedData = {
+        category: values.category,
+        item: values.item,
+        pricePerDay: values.price, // Map back to pricePerDay
+        city: values.city,
+        area: values.area,
+        condition: values.condition,
+        imageUri: values.image, // Map back to imageUri
+      };
 
-    addPost(
-      userImageUri,
-      username,
-      values.image,
-      values.category,
-      values.item,
-      values.price,
-      values.city,
-      values.area,
-      values.condition,
-      status,
-      rating
-    );
-    setHasBeenSubmitted(true);
+      editPost(postId, updatedData);
+      setHasBeenSubmitted(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      try {
-        // Your API call here
-        setStatus({ type: "success", message: "Item posted successfully!" });
-        resetForm();
-        setHasBeenSubmitted(false); // Reset submission state
-      } catch (error) {
-        setStatus({
-          type: "error",
-          message: "Failed to post item. Please try again.",
-        });
-      } finally {
-        setSubmitting(false);
-      }
-    }, 2000);
+      // Simulate API call
+      setTimeout(() => {
+        try {
+          setStatus({ type: "success", message: "Item updated successfully!" });
+          setHasBeenSubmitted(false);
+          onClose && onClose();
+        } catch (error) {
+          setStatus({
+            type: "error",
+            message: "Failed to update item. Please try again.",
+          });
+        } finally {
+          setSubmitting(false);
+        }
+      }, 1000); // Shorter timeout for better UX
+
+    } catch (error) {
+      console.error('Error updating post:', error);
+      setStatus({
+        type: "error",
+        message: "Failed to update item. Please try again.",
+      });
+      setSubmitting(false);
+    }
   };
 
   return (
-    <SafeScreen>
-      <ScrollScreen>
-        <Formik
+    <Modal visible={visible} animationType="slide" transparent>
+      <ScrollView contentContainerStyle={styles.scroll}>
+        <AppForm
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
@@ -246,19 +259,23 @@ function Post(props) {
 
                 <SubmitBtn
                   setHasBeenSubmitted={setHasBeenSubmitted}
-                ></SubmitBtn>
+                  title="Update Post"
+                />
               </>
             );
           }}
-        </Formik>
-      </ScrollScreen>
-      <Navbar />
-    </SafeScreen>
+        </AppForm>
+      </ScrollView>
+    </Modal>
   );
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme) => StyleSheet.create({
   container: {},
+  scroll: {
+    flex: 1,
+    
+  },
 });
 
-export default Post;
+export default EditPostModal;

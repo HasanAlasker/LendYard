@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 
 import { ThemeProvider, useTheme } from "./config/ThemeContext";
-import { PostProvider } from './config/PostContext'
+import { PostProvider } from "./config/PostContext";
 import Home from "./pages/Users/Home";
 import Have from "./pages/Users/Have";
 import Post from "./pages/Users/Post";
@@ -14,6 +14,7 @@ import Book from "./pages/Users/Book";
 import Profile from "./pages/Users/Profile";
 import Requests from "./pages/Users/Requests";
 import EditProfile from "./pages/Users/EditProfile";
+import { AuthProvider } from "./config/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,9 +51,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <PostProvider>
-          <AppContent />
-        </PostProvider>
+        <AuthProvider>
+          <PostProvider>
+            <AppContent />
+          </PostProvider>
+        </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );

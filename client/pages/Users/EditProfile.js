@@ -68,7 +68,6 @@ function EditProfile({ userName, image, number, email, rating, sep }) {
     <SafeScreen>
       <TopChunkProfile
         userName={userName || "Hasan Alasker"}
-        userPic={image || require("../../assets/Pics/hasan.png")}
         userRate={rating || 5}
         isPicDisabled={false}
         onPressPic={() => console.log("Profile pic pressed")}

@@ -21,7 +21,6 @@ function Profile({userName, isNotification, myProfile=true, userPic, userRate, s
           isNotification={true}
           myProfile={myProfile}
           userName={"Hasan Alasker"}
-          userPic={require("../../assets/Pics/hasan.png")}
           userRate={"5"}
           sep={"Items"}
           settingsPress={()=>{setIsMenu(true)}}

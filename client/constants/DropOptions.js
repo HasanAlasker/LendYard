@@ -254,3 +254,40 @@ export const getItemsByCategory = (categoryValue) => {
 export const getAreasByCity = (cityValue) => {
   return areas.filter(area => area.city === cityValue);
 };
+
+// Helper functions to get labels from values
+export const getCategoryLabel = (categoryValue) => {
+  if (!categoryValue) return categoryValue;
+  const category = categories.find(cat => cat.value === categoryValue);
+  return category ? category.label : categoryValue;
+};
+
+export const getItemLabel = (itemValue) => {
+  if (!itemValue) return itemValue;
+  const item = items.find(itm => itm.value === itemValue);
+  return item ? item.label : itemValue;
+};
+
+export const getCityLabel = (cityValue) => {
+  if (!cityValue) return cityValue;
+  const city = cities.find(cty => cty.value === cityValue);
+  return city ? city.label : cityValue;
+};
+
+export const getAreaLabel = (areaValue) => {
+  if (!areaValue) return areaValue;
+  const area = areas.find(ar => ar.value === areaValue);
+  return area ? area.label : areaValue;
+};
+
+export const getConditionLabel = (conditionValue) => {
+  if (!conditionValue) return conditionValue;
+  const cond = condition.find(c => c.value === conditionValue);
+  return cond ? cond.label : conditionValue;
+};
+
+export const getPriceLabel = (priceValue) => {
+  if (!priceValue) return priceValue;
+  const pr = price.find(p => p.value === priceValue);
+  return pr ? pr.label : `${priceValue} JD`;
+};

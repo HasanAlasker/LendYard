@@ -18,7 +18,7 @@ function Requests(props) {
               name={"Ibrahim Mosa"}
               date={"12/ 1/ 2026"}
               profilePic={require('../../assets/Pics/u1.png')}
-              image={require("../../assets/Pics/hd.png")}
+              // image={require("../../assets/Pics/hd.png")}
               itemName={"Hair Dryer"}
               itemCat={"Household"}
               area={"Al shmesani"}
@@ -39,7 +39,7 @@ function Requests(props) {
               name={"Mohammad Issa"}
               date={"12/ 1/ 2026"}
               profilePic={require('../../assets/Pics/u2.png')}
-              image={require("../../assets/Pics/vc.png")}
+              // image={require("../../assets/Pics/vc.png")}
               itemName={"Vacuum Cleaner"}
               itemCat={"Tools"}
               area={"Airport Street"}

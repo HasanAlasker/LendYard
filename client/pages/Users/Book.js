@@ -19,7 +19,7 @@ function Book(props) {
               name={"Adam Ishak"}
               date={"12/ 1/ 2026"}
               profilePic={require('../../assets/Pics/u1.png')}
-              image={require("../../assets/Pics/image.png")}
+              // image={require("../../assets/Pics/image.png")}
               itemName={"Electric saw"}
               itemCat={"Tools"}
               status={"late"}
@@ -32,7 +32,7 @@ function Book(props) {
               name={"Momtaz Hamdan"}
               date={"12/ 1/ 2026"}
               profilePic={require('../../assets/Pics/u2.png')}
-              image={require("../../assets/Pics/tv.png")}
+              // image={require("../../assets/Pics/tv.png")}
               itemName={"Television"}
               itemCat={"Electronics"}
               status={"early"}

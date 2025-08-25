@@ -85,9 +85,9 @@ function EditPostModal({
   onClose,
 }) {
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
-  const { editPost, getPostById } = usePosts();
+  const { editPost, Posts } = usePosts();
   const styles = useThemedStyles(getStyles)
-  const existingPost = getPostById(postId);
+  const existingPost = Posts(postId);
   
   // If no post found, return null or show error
   if (!existingPost) {

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Modal,
+  ScrollView,
 } from "react-native";
 import useThemedStyles from "../hooks/useThemedStyles";
 import { useTheme } from "../config/ThemeContext";
@@ -14,11 +15,13 @@ import MenuBackBtn from "./MenuBackBtn";
 import MenuOption from "./MenuOption";
 import SeparatorComp from "./SeparatorComp";
 import EditPostModal from "./EditPostModal";
+import { usePosts } from "../config/PostContext";
 
 function PostMenu({ isVisible, onClose, isMine }) {
   const styles = useThemedStyles(getStyles);
   const { toggleTheme } = useTheme();
   const [reportMenu, setReportMenu] = useState(false);
+  const {deletePost} = usePosts()
 
   const handleReportMenu = () => {
     setReportMenu(!reportMenu);
@@ -136,7 +139,7 @@ function PostMenu({ isVisible, onClose, isMine }) {
           </BackContainer>
         </View>
       </Modal>
-      <EditPostModal></EditPostModal>
+      {/* <EditPostModal></EditPostModal> */}
     </>
   );
 }
@@ -166,6 +169,9 @@ const getStyles = (theme) =>
       zIndex: 90,
       opacity: 0.5,
     },
+    scroll:{
+      flex:1
+    }
   });
 
 export default PostMenu;

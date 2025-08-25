@@ -55,11 +55,11 @@ function RequestModal({ isVisibile, onClose, pricePerDay }) {
   };
   const showPrice = () => {
     if (baseUnit === "hours") {
-      return pricePerDay <= 25 ? pricePerDay : (pricePerDay / 24) * duration;
+      return pricePerDay <= 25 ? pricePerDay : Math.round((pricePerDay / 24) * duration);
     } 
-    else if (baseUnit === "days") return pricePerDay * duration;
-    else if (baseUnit === "weeks") return pricePerDay * duration * 7;
-    else if (baseUnit === "months") return pricePerDay * duration * 30;
+    else if (baseUnit === "days") return Math.round(pricePerDay * duration);
+    else if (baseUnit === "weeks") return Math.round(pricePerDay * duration * 7);
+    else if (baseUnit === "months") return Math.round(pricePerDay * duration * 30);
     else return "Invalid";
   };
 

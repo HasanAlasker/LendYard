@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PostContext = createContext();
 
@@ -16,12 +16,12 @@ export const PostProvider = ({ children }) => {
   const loadPosts = async () => {
     try {
       setLoading(true);
-      const storedPosts = await AsyncStorage.getItem('posts');
+      const storedPosts = await AsyncStorage.getItem("posts");
       if (storedPosts) {
         setPosts(JSON.parse(storedPosts));
       }
     } catch (error) {
-      console.error('Error loading posts:', error);
+      console.error("Error loading posts:", error);
     } finally {
       setLoading(false);
     }
@@ -30,42 +30,28 @@ export const PostProvider = ({ children }) => {
   // Save posts to storage
   const savePosts = async (postsToSave) => {
     try {
-      await AsyncStorage.setItem('posts', JSON.stringify(postsToSave));
+      await AsyncStorage.setItem("posts", JSON.stringify(postsToSave));
     } catch (error) {
-      console.error('Error saving posts:', error);
+      console.error("Error saving posts:", error);
     }
   };
 
-  // Add a new post
-  const addPost = async (
-    userImageUri,
-    username,
-    userId,
-    image,
-    category,
-    item,
-    price,
-    city,
-    area,
-    condition,
-    status = 'available',
-    rating = null
-  ) => {
+  const addPost = async (postData) => {
     try {
       const newPost = {
-        id: Date.now().toString(), // Simple ID generation
-        userImageUri,
-        username,
-        userId,
-        image,
-        category,
-        item,
-        price,
-        city,
-        area,
-        condition,
-        status,
-        rating,
+        id: Date.now().toString(),
+        userImageUri: postData.userImageUri,
+        username: postData.username,
+        userId: postData.userId || "Unknown User", // Add default if not provided
+        image: postData.image,
+        category: postData.category,
+        item: postData.item,
+        price: postData.price,
+        city: postData.city,
+        area: postData.area,
+        condition: postData.condition,
+        status: postData.status || "available",
+        rating: postData.rating || null,
         createdAt: new Date().toLocaleDateString(),
         updatedAt: new Date().toISOString(),
       };
@@ -75,7 +61,7 @@ export const PostProvider = ({ children }) => {
       await savePosts(updatedPosts);
       return newPost;
     } catch (error) {
-      console.error('Error adding post:', error);
+      console.error("Error adding post:", error);
       throw error;
     }
   };
@@ -83,7 +69,7 @@ export const PostProvider = ({ children }) => {
   // Update post status
   const updatePostStatus = async (postId, newStatus) => {
     try {
-      const updatedPosts = posts.map(post =>
+      const updatedPosts = posts.map((post) =>
         post.id === postId
           ? { ...post, status: newStatus, updatedAt: new Date().toISOString() }
           : post
@@ -91,7 +77,7 @@ export const PostProvider = ({ children }) => {
       setPosts(updatedPosts);
       await savePosts(updatedPosts);
     } catch (error) {
-      console.error('Error updating post status:', error);
+      console.error("Error updating post status:", error);
       throw error;
     }
   };
@@ -99,38 +85,39 @@ export const PostProvider = ({ children }) => {
   // Delete a post
   const deletePost = async (postId) => {
     try {
-      const updatedPosts = posts.filter(post => post.id !== postId);
+      const updatedPosts = posts.filter((post) => post.id !== postId);
       setPosts(updatedPosts);
       await savePosts(updatedPosts);
     } catch (error) {
-      console.error('Error deleting post:', error);
+      console.error("Error deleting post:", error);
       throw error;
     }
   };
 
   // Get posts by user
   const getPostsByUser = (userId) => {
-    return posts.filter(post => post.userId === userId);
+    return posts.filter((post) => post.userId === userId);
   };
 
   // Get posts by status
   const getPostsByStatus = (status) => {
-    return posts.filter(post => post.status === status);
+    return posts.filter((post) => post.status === status);
   };
 
   // Get posts by category
   const getPostsByCategory = (category) => {
-    return posts.filter(post => post.category === category);
+    return posts.filter((post) => post.category === category);
   };
 
   // Search posts
   const searchPosts = (query) => {
     const lowercaseQuery = query.toLowerCase();
-    return posts.filter(post =>
-      post.item.toLowerCase().includes(lowercaseQuery) ||
-      post.category.toLowerCase().includes(lowercaseQuery) ||
-      post.city.toLowerCase().includes(lowercaseQuery) ||
-      post.area.toLowerCase().includes(lowercaseQuery)
+    return posts.filter(
+      (post) =>
+        post.item.toLowerCase().includes(lowercaseQuery) ||
+        post.category.toLowerCase().includes(lowercaseQuery) ||
+        post.city.toLowerCase().includes(lowercaseQuery) ||
+        post.area.toLowerCase().includes(lowercaseQuery)
     );
   };
 
@@ -146,17 +133,13 @@ export const PostProvider = ({ children }) => {
     searchPosts,
   };
 
-  return (
-    <PostContext.Provider value={value}>
-      {children}
-    </PostContext.Provider>
-  );
+  return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };
 
 export const usePosts = () => {
   const context = useContext(PostContext);
   if (!context) {
-    throw new Error('usePosts must be used within a PostProvider');
+    throw new Error("usePosts must be used within a PostProvider");
   }
   return context;
 };

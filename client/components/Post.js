@@ -18,6 +18,8 @@ import { useState } from "react";
 import ItemPricing from "./ItemPricing";
 
 function Post({
+  id,
+  userId,
   profilePic,
   name,
   date,

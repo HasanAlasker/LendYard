@@ -5,7 +5,7 @@ function ItmeImage({source}) {
   const styles = useThemedStyles(getStyles);
 
   return <View style={styles.itemImage}>
-    <Image source={source} style={styles.image}></Image>
+    <Image source={{uri: source}} style={styles.image}></Image>
   </View>;
 }
 
